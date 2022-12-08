@@ -39,6 +39,7 @@ const OrderPage = () => {
   const submitHandler = () => {
     postOrderToHistory(form, cartContext);
     setShowModal(true);
+    cartContext.clearCart();
   };
 
   const modalHandler = () => {

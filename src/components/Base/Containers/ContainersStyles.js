@@ -33,7 +33,6 @@ export const Wrapper = styled.div`
   min-height: calc(100vh - 290px);
 `;
 
-
 const shadowStyle = css`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 30px;
@@ -43,6 +42,11 @@ const shadowStyle = css`
   align-items: flex-end;
   width: 446px;
   margin: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    padding: 30px;
+    width: 446px;
+  }
 `;
 
 export const EmptyWrapper = styled.div`
@@ -51,8 +55,6 @@ export const EmptyWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
-
-  ${({ $withShadow }) => $withShadow && shadowStyle};
 
   h3,
   .amount {
@@ -70,4 +72,6 @@ export const EmptyWrapper = styled.div`
     width: 50%;
     padding: 0px 0px 0px 20px;
   }
+
+  ${({ $withShadow }) => $withShadow && shadowStyle};
 `;

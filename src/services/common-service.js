@@ -20,3 +20,16 @@ export const getOrders = () => {
 export const getCards = () => {
   return axios.get(`${process.env.REACT_APP_API_URL}/foods`);
 };
+
+export const getFilteredCards = (category) => {
+  return axios.get(`${process.env.REACT_APP_API_URL}/foods`).then((res) => {
+    if (category === "All") {
+      return res.data;
+    } else {
+      const result = res.data.filter(
+        (el) => el.category === category.toLowerCase()
+      );
+      return result;
+    }
+  });
+};

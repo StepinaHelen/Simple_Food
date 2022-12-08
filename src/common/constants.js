@@ -1,6 +1,7 @@
 export const TYPES_LIST = {
   addItem: "ADD_ITEM",
   removeItem: "REMOVE_ITEM",
+  clearCart: "CLEAR_CART",
 };
 
 export const CATEGORIES = [
@@ -9,7 +10,6 @@ export const CATEGORIES = [
   "Sushi",
   "Drinks",
   "Noodles",
-  "Roles",
   "Salads",
 ];
 
