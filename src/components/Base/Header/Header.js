@@ -23,9 +23,9 @@ const Header = () => {
       <HeaderContainer>
         <CommonContainer>
           <HeaderWrapper>
-            <a href="/">
+            <Link to={"/"}>
               <Icons name="logo" classes={"icon"} />
-            </a>
+            </Link>
             <Title>Simple food</Title>
             <IconsContainer>
               <Link to={ROUTES.cartPage}>

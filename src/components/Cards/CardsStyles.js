@@ -101,3 +101,9 @@ export const List = styled.ul`
   max-width: 1200px;
   margin: 0 auto;
 `;
+
+export const Btn = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+`;

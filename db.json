@@ -18,7 +18,7 @@
     },
     {
       "id": 3,
-      "title": "Сheese pizza",
+      "title": "Cheese pizza",
       "price": 1,
       "category": "pizza",
       "amount": 1,
@@ -58,7 +58,7 @@
       "id": 8,
       "title": "Vegetarian salad",
       "price": 15,
-      "category": "salad",
+      "category": "salads",
       "amount": 1,
       "img": "https://images.immediate.co.uk/production/volatile/sites/2/2015/11/16289.jpg?quality=90&resize=600,400"
     },

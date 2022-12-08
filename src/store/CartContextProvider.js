@@ -1,11 +1,16 @@
 import CartContext from "./cart-context";
 import { useReducer } from "react";
 import { TYPES_LIST } from "../common/constants";
-
-const defaultCartSate = {
-  items: [],
-  totalAmount: 0,
-};
+import {
+  setLocalStorageItem,
+  getLocalStorageItem,
+} from "../services/persistence-service";
+const defaultCartSate = getLocalStorageItem("cartItems")
+  ? getLocalStorageItem("cartItems")
+  : {
+      items: [],
+      totalAmount: 0,
+    };
 
 const cartReducer = (state, action) => {
   if (action.type === TYPES_LIST.addItem) {
@@ -33,21 +38,32 @@ const cartReducer = (state, action) => {
 
     const updateTotalAmount =
       state.totalAmount + action.item.price * action.item.amount;
-    return {
+    const newSstate = {
       items: updatedItems,
       totalAmount: updateTotalAmount,
     };
+    setLocalStorageItem("cartItems", newSstate);
+    return newSstate;
   }
   if (action.type === TYPES_LIST.removeItem) {
     const filteredItems = state.items.filter((el) => el.id !== action.id);
     const deletedIndex = state.items.findIndex((el) => el.id === action.id);
     const deletedCard = state.items[deletedIndex];
-    return {
+    const newSstate = {
       items: filteredItems,
       totalAmount: state.totalAmount - deletedCard.amount * deletedCard.price,
     };
+
+    setLocalStorageItem("cartItems", newSstate);
+    return newSstate;
   }
+  if (action.type === TYPES_LIST.clearCart) {
+    localStorage.clear("cartItems");
+    return defaultCartSate;
+  }
+
   return defaultCartSate;
+
 };
 
 const CartContextProvider = (props) => {
@@ -62,8 +78,13 @@ const CartContextProvider = (props) => {
       item,
     });
   };
+
   const removeItemHandler = (id) => {
     dispatchCartState({ type: TYPES_LIST.removeItem, id });
+  };
+
+  const clearCartHandler = () => {
+    dispatchCartState({ type: TYPES_LIST.clearCart });
   };
 
   const cartContext = {
@@ -71,6 +92,7 @@ const CartContextProvider = (props) => {
     totalAmount: cartState.totalAmount,
     addItem: addItemHandler,
     removeItem: removeItemHandler,
+    clearCart: clearCartHandler,
   };
 
   return (

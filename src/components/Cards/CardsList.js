@@ -5,32 +5,63 @@ import Icons from "../SvgComponent/SvgComponent";
 import { useEffect, useState } from "react";
 import { SortWrapper } from "./CardsStyles";
 import { CATEGORIES } from "../../common/constants";
-import { List } from "./CardsStyles";
-import { getCards } from "../../services/common-service";
+import { List, Btn } from "./CardsStyles";
+import {
+  getCards,
+  getFilteredCards,
+  multiSortHandler,
+} from "../../services/common-service";
+import { setLocalStorageItem } from "../../services/persistence-service";
 
 function CardList() {
   const [cards, setCards] = useState([]);
+  const [btn, setBtn] = useState("active");
 
   const fetchCards = async () => {
     const result = await getCards();
-    setCards(result.data);
+
+    setCards(result);
   };
 
   useEffect(() => {
     fetchCards();
   }, []);
 
+  const filterHandler = async (category) => {
+    const result = await getFilteredCards(category);
+    setCards(result);
+    setLocalStorageItem("category", category);
+  };
+
+  const sortedHandler = () => {
+    if (btn === "inactive") {
+      multiSortHandler(1, -1, cards);
+      setLocalStorageItem("sorting", "ascending");
+      setBtn("active");
+    } else {
+      multiSortHandler(-1, 1, cards);
+      setLocalStorageItem("sorting", "descending");
+      setBtn("inactive");
+    }
+  };
+
   return (
     <CommonContainer>
       <SortWrapper>
         <div>
           {CATEGORIES.map((el) => (
-            <Button className={"categories"} key={el}>
+            <Button
+              className={"categories"}
+              key={el}
+              onClick={() => filterHandler(el)}
+            >
               {el}
             </Button>
           ))}
         </div>
-        <Icons name="arrows" classes={"arrow"} />
+        <Btn onClick={sortedHandler}>
+          <Icons name="arrows" classes={"arrow"} />
+        </Btn>
       </SortWrapper>
       <List>
         {cards.map((el) => (
