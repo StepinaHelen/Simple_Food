@@ -6,55 +6,43 @@ import { useEffect, useState } from "react";
 import { SortWrapper } from "./CardsStyles";
 import { CATEGORIES } from "../../common/constants";
 import { List, Btn } from "./CardsStyles";
-import { getCards, getFilteredCards } from "../../services/common-service";
+import {
+  getCards,
+  getFilteredCards,
+  multiSortHandler,
+} from "../../services/common-service";
+import { setLocalStorageItem } from "../../services/persistence-service";
 
 function CardList() {
   const [cards, setCards] = useState([]);
   const [btn, setBtn] = useState("active");
 
   const fetchCards = async () => {
-    let cardsArr = [];
-    if (localStorage.getItem("sortedList").length) {
-      cardsArr = JSON.parse(localStorage.getItem("sortedList"));
-    } else {
-      const result = await getCards();
-      cardsArr = result.data;
-    }
-    setCards(cardsArr);
+    const result = await getCards();
+
+    setCards(result);
   };
 
   useEffect(() => {
     fetchCards();
   }, []);
 
-  const filterHandler = async (categories) => {
-    const result = await getFilteredCards(categories);
+  const filterHandler = async (category) => {
+    const result = await getFilteredCards(category);
     setCards(result);
-    localStorage.setItem("sortedList", JSON.stringify(result));
-  };
-
-  const multiSortHandler = (positive, negative, stateBtn) => {
-    setBtn(stateBtn);
-    return cards.sort(function (a, b) {
-      if (a.title > b.title) {
-        return positive;
-      }
-      if (a.title < b.title) {
-        return negative;
-      }
-      return 0;
-    });
+    setLocalStorageItem("category", category);
   };
 
   const sortedHandler = () => {
-    let result = [];
     if (btn === "inactive") {
-      result = multiSortHandler(-1, 1, "active");
+      multiSortHandler(1, -1, cards);
+      setLocalStorageItem("sorting", "ascending");
+      setBtn("active");
     } else {
-      result = multiSortHandler(1, -1, "inactive");
+      multiSortHandler(-1, 1, cards);
+      setLocalStorageItem("sorting", "descending");
+      setBtn("inactive");
     }
-    localStorage.setItem("sortedList", JSON.stringify(result));
-    return result;
   };
 
   return (
