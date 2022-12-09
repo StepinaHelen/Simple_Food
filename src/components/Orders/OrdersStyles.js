@@ -121,13 +121,21 @@ export const WrapperList = styled.div`
   width: 100%;
 `;
 
-export const Form = styled.form`
+export const FormWrapper = styled.div`
+  width: 675px;
   label {
     display: flex;
     flex-direction: column;
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
+    position: relative;
+    p {
+      position: absolute;
+      color: red;
+      bottom: -3px;
+      font-size: 12px;
+    }
   }
 
   h2 {
@@ -146,11 +154,26 @@ export const Form = styled.form`
     width: 100%;
     font-size: 24px;
     line-height: 28px;
-
-    @media screen and (min-width: 1200px) {
-      width: 675px;
-      max-width: 675px;
-      margin-right: 30px;
+    button {
+      display: block;
     }
+    .icon {
+      height: 35px;
+      width: 35px;
+    }
+  }
+`;
+
+export const BtnContainer = styled.div`
+  display: flex;
+  justify-content: center;
+
+  .icon {
+    height: 35px;
+    width: 35px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    justify-content: end;
   }
 `;

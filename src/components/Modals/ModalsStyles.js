@@ -8,6 +8,7 @@ export const BackdropWrapper = styled.div`
   left: 0;
   overflow-y: scroll;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
 `;
 
 export const ModalWrapper = styled.div`
@@ -23,4 +24,5 @@ export const ModalWrapper = styled.div`
   width: 100%;
   animation: slide-down 300ms ease-out forwards;
   text-align: center;
+  z-index: 100;
 `;
