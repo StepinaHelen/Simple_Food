@@ -27,7 +27,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <CartContextProvider>
-        <ToastContainer position="bottom-right" />
+        <ToastContainer />
         <BrowserRouter>
           <Header />
           <Routes>
