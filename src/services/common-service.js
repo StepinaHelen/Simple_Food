@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getLocalStorageItem } from "./persistence-service";
 
-export const postOrderToHistory = async (form, cartContext) => {
+export const postOrderToHistory = async ({ form, cartContext }) => {
   return await axios.post(`${process.env.REACT_APP_API_URL}/orders`, {
     name: form.name,
     surName: form.surName,
@@ -30,37 +30,26 @@ export const multiSortHandler = (positive, negative, cards) => {
   });
 };
 
-export const getCards = () => {
-  const category = getLocalStorageItem("category") || null;
+export const getCards = async (inputCategory) => {
+  const category = inputCategory || getLocalStorageItem("category") || null;
   const sorting = getLocalStorageItem("sorting");
-  return axios.get(`${process.env.REACT_APP_API_URL}/foods`).then((res) => {
-    let results = [];
-    if (category === "All" || category === null) {
-      results = res.data;
-    } else {
-      const result = res.data.filter(
-        (el) => el.category === category.toLowerCase()
-      );
-      results = result;
-    }
-    if (sorting === "ascending") {
-      results = multiSortHandler(1, -1, results);
-    } else {
-      results = multiSortHandler(-1, 1, results);
-    }
-    return results;
-  });
-};
-
-export const getFilteredCards = (category) => {
-  return axios.get(`${process.env.REACT_APP_API_URL}/foods`).then((res) => {
-    if (category === "All") {
-      return res.data;
-    } else {
-      const result = res.data.filter(
-        (el) => el.category === category.toLowerCase()
-      );
-      return result;
-    }
-  });
+  return await axios
+    .get(`${process.env.REACT_APP_API_URL}/foods`)
+    .then((res) => {
+      let results = [];
+      if (category === "All" || category === null) {
+        results = res.data;
+      } else {
+        const result = res.data.filter(
+          (el) => el.category === category.toLowerCase()
+        );
+        results = result;
+      }
+      if (sorting === "ascending") {
+        results = multiSortHandler(1, -1, results);
+      } else {
+        results = multiSortHandler(-1, 1, results);
+      }
+      return results;
+    });
 };

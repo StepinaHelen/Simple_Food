@@ -2,44 +2,44 @@ import CardItem from "./CardItem";
 import Button from "../Button/Button";
 import CommonContainer from "../Base/Containers/CommonContainer";
 import Icons from "../SvgComponent/SvgComponent";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SortWrapper } from "./CardsStyles";
 import { CATEGORIES } from "../../common/constants";
 import { List, Btn } from "./CardsStyles";
-import {
-  getCards,
-  getFilteredCards,
-  multiSortHandler,
-} from "../../services/common-service";
+import { getCards, multiSortHandler } from "../../services/common-service";
 import { setLocalStorageItem } from "../../services/persistence-service";
+import { useQuery } from "react-query";
+import Modal from "../Modals/Modal";
+import { useNavigate } from "react-router-dom";
+import Spinner from "../Spinner/Spinner";
+import {KEYQUERIES}  from '../../common/constants'
 
 function CardList() {
-  const [cards, setCards] = useState([]);
   const [btn, setBtn] = useState("active");
+  const [choosenCategory, setChoosenCategory] = useState(null);
 
-  const fetchCards = async () => {
-    const result = await getCards();
+  const navigate = useNavigate();
 
-    setCards(result);
+  const { data, error, isLoading } = useQuery([KEYQUERIES.cards, choosenCategory], () =>
+    getCards(choosenCategory)
+  );
+
+  const filterHandler = (category) => {
+    setChoosenCategory(category);
+    setLocalStorageItem("category", category);
   };
 
-  useEffect(() => {
-    fetchCards();
-  }, []);
-
-  const filterHandler = async (category) => {
-    const result = await getFilteredCards(category);
-    setCards(result);
-    setLocalStorageItem("category", category);
+  const modalHandler = () => {
+    navigate("/");
   };
 
   const sortedHandler = () => {
     if (btn === "inactive") {
-      multiSortHandler(1, -1, cards);
+      multiSortHandler(1, -1, data);
       setLocalStorageItem("sorting", "ascending");
       setBtn("active");
     } else {
-      multiSortHandler(-1, 1, cards);
+      multiSortHandler(-1, 1, data);
       setLocalStorageItem("sorting", "descending");
       setBtn("inactive");
     }
@@ -63,18 +63,24 @@ function CardList() {
           <Icons name="arrows" classes={"arrow"} />
         </Btn>
       </SortWrapper>
+      {isLoading && <Spinner />}
+
       <List>
-        {cards.map((el) => (
-          <CardItem
-            img={el.img}
-            price={el.price}
-            amount={el.amount}
-            id={el.id}
-            title={el.title}
-            category={el.category}
-            key={el.id}
-          />
-        ))}
+        {error && error.message && (
+          <Modal title={error.message} onCloseModal={modalHandler} />
+        )}
+        {data &&
+          data.map((el) => (
+            <CardItem
+              img={el.img}
+              price={el.price}
+              amount={el.amount}
+              id={el.id}
+              title={el.title}
+              category={el.category}
+              key={el.id}
+            />
+          ))}
       </List>
     </CommonContainer>
   );

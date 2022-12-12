@@ -10,6 +10,10 @@ import ShadowContainer from "../Base/Containers/ShadowContainer";
 import Modal from "../Modals/Modal";
 import { OrderContainer, BtnContainer, Wrapper } from "./PagesStyles";
 import { postOrderToHistory } from "../../services/common-service";
+import { Formik } from "formik";
+import { OrderSchema } from "../../common/utils";
+import { useMutation } from "react-query";
+import Spinner from "../Spinner/Spinner";
 
 const initialFormState = {
   name: "",
@@ -20,30 +24,19 @@ const initialFormState = {
 };
 
 const OrderPage = () => {
-  const [form, setForm] = useState(initialFormState);
-
-  const onFormChange = (e) => {
-    setForm((previous) => {
-      return {
-        ...previous,
-        [e.target.name]: e.target.value,
-      };
-    });
-  };
-
-  const cartContext = useContext(CartContext);
-
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-
-  const submitHandler = () => {
-    postOrderToHistory(form, cartContext);
-    setShowModal(true);
-    cartContext.clearCart();
-  };
+  const cartContext = useContext(CartContext);
+  const { mutate, error, isLoading } = useMutation(postOrderToHistory);
 
   const modalHandler = () => {
     navigate("/order-history");
+  };
+
+  const submitHandler = (form) => {
+    mutate({ form, cartContext });
+    setShowModal(true);
+    cartContext.clearCart();
   };
 
   return (
@@ -55,24 +48,38 @@ const OrderPage = () => {
           onCloseModal={modalHandler}
         />
       )}
-      <CommonContainer withMargin={true}>
-        <Wrapper>
-          <OrderContainer>
-            <OrderForm onFormChange={onFormChange}></OrderForm>
-            <ShadowContainer withShadow={"withShadow"}>
-              <OrderList
-                orderItems={cartContext.items}
-                totalAmount={cartContext.totalAmount}
-              ></OrderList>
-            </ShadowContainer>
-          </OrderContainer>
-          <BtnContainer>
-            <Button className={"order"} onClick={submitHandler}>
-              Order <Icons name="check" classes={"icon"} />
-            </Button>
-          </BtnContainer>
-        </Wrapper>
-      </CommonContainer>
+      {isLoading && <Spinner />}
+
+      {error && error.message && (
+        <Modal title={error.message} onCloseModal={modalHandler} />
+      )}
+      <Formik
+        initialValues={initialFormState}
+        validationSchema={OrderSchema}
+        onSubmit={submitHandler}
+      >
+        {({ submitForm }) => (
+          <CommonContainer withMargin={true}>
+            <Wrapper>
+              <OrderContainer>
+                <OrderForm></OrderForm>
+
+                <ShadowContainer withShadow={"withShadow"}>
+                  <OrderList
+                    orderItems={cartContext.items}
+                    totalAmount={cartContext.totalAmount}
+                  ></OrderList>
+                </ShadowContainer>
+              </OrderContainer>
+              <BtnContainer>
+                <Button className={"order"} onClick={submitForm} type="button">
+                  Order <Icons name="check" classes={"icon"} />
+                </Button>
+              </BtnContainer>
+            </Wrapper>
+          </CommonContainer>
+        )}
+      </Formik>
     </>
   );
 };
