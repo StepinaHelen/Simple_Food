@@ -1,7 +1,7 @@
 import OrderList from "./OrderList";
-import { useState, useEffect } from "react";
 import CommonContainer from "../Base/Containers/CommonContainer";
 import ShadowContainer from "../Base/Containers/ShadowContainer";
+import Modal from "../Modals/Modal";
 import {
   List,
   DetailsContainer,
@@ -10,30 +10,37 @@ import {
 } from "./OrdersStyles";
 import { getOrders } from "../../services/common-service";
 import Notice from "../Notice/Notice";
+import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
+import Spinner from "../Spinner/Spinner";
 
 const OrdersHistoryItem = () => {
-  const [orders, setOrders] = useState([]);
+  const { isLoading, data, error } = useQuery("orders", getOrders);
+  const navigate = useNavigate();
 
-  const fetchOrders = async () => {
-    const result = await getOrders();
-    setOrders(result.data);
+  const modalHandler = () => {
+    navigate("/");
   };
-  useEffect(() => {
-    fetchOrders();
-  }, []);
 
   return (
     <CommonContainer withMargin={true}>
       <WrapperContainer>
-        {!orders.length && (
+        {data && !data.data.length && (
           <Notice
             title="You don't have any orders!"
             message="Place your first order now! We're waiting for you :)"
           ></Notice>
         )}
-        {orders.length > 0 && (
+
+        {isLoading && <Spinner />}
+
+        {error && error.message && (
+          <Modal title={error.message} onCloseModal={modalHandler} />
+        )}
+
+        {data && data.data.length > 0 && (
           <>
-            {orders.map((el) => {
+            {data.data.map((el) => {
               return (
                 <Wrapper key={el.id}>
                   <DetailsContainer>

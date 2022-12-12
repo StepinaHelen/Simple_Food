@@ -12,6 +12,8 @@ import { OrderContainer, BtnContainer, Wrapper } from "./PagesStyles";
 import { postOrderToHistory } from "../../services/common-service";
 import { Formik } from "formik";
 import { OrderSchema } from "../../common/utils";
+import { useMutation } from "react-query";
+import Spinner from "../Spinner/Spinner";
 
 const initialFormState = {
   name: "",
@@ -24,19 +26,18 @@ const initialFormState = {
 const OrderPage = () => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+  const cartContext = useContext(CartContext);
+  const { mutate, error, isLoading } = useMutation(postOrderToHistory);
 
   const modalHandler = () => {
     navigate("/order-history");
   };
 
-  const submitHandler = (values) => {
-    console.log(values, cartContext.items);
-    postOrderToHistory(values, cartContext);
+  const submitHandler = (form) => {
+    mutate({ form, cartContext });
     setShowModal(true);
     cartContext.clearCart();
   };
-
-  const cartContext = useContext(CartContext);
 
   return (
     <>
@@ -46,6 +47,11 @@ const OrderPage = () => {
           message="In the near future, our manager will contact you to clarify delivery and payment."
           onCloseModal={modalHandler}
         />
+      )}
+      {isLoading && <Spinner />}
+
+      {error && error.message && (
+        <Modal title={error.message} onCloseModal={modalHandler} />
       )}
       <Formik
         initialValues={initialFormState}
