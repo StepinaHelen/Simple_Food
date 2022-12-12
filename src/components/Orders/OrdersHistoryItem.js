@@ -13,9 +13,10 @@ import Notice from "../Notice/Notice";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
+import { KEYQUERIES } from "../../common/constants";
 
 const OrdersHistoryItem = () => {
-  const { isLoading, data, error } = useQuery("orders", getOrders);
+  const { isLoading, data, error } = useQuery(KEYQUERIES.orders, getOrders);
   const navigate = useNavigate();
 
   const modalHandler = () => {

@@ -18,3 +18,9 @@ export const ROUTES = {
   orderPage: "/order-page",
   orderHistoryPage: "/order-history",
 };
+
+export const KEYQUERIES = {
+  orders: "orders",
+  cards: "cards",
+  orderHistoryPage: "/order-history",
+};

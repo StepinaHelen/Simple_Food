@@ -62,7 +62,7 @@ const OrderPage = () => {
           <CommonContainer withMargin={true}>
             <Wrapper>
               <OrderContainer>
-                <OrderForm cartContext={cartContext}></OrderForm>
+                <OrderForm></OrderForm>
 
                 <ShadowContainer withShadow={"withShadow"}>
                   <OrderList

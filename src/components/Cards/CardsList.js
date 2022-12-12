@@ -12,6 +12,7 @@ import { useQuery } from "react-query";
 import Modal from "../Modals/Modal";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
+import {KEYQUERIES}  from '../../common/constants'
 
 function CardList() {
   const [btn, setBtn] = useState("active");
@@ -19,7 +20,7 @@ function CardList() {
 
   const navigate = useNavigate();
 
-  const { data, error, isLoading } = useQuery(["cards", choosenCategory], () =>
+  const { data, error, isLoading } = useQuery([KEYQUERIES.cards, choosenCategory], () =>
     getCards(choosenCategory)
   );
 
