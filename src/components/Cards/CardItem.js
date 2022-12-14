@@ -48,7 +48,7 @@ const CardItem = (props) => {
           >
             -
           </button>
-          <span>{value}</span>
+          <span data-testid="value">{value}</span>
           <button type="button" onClick={increment}>
             +
           </button>
