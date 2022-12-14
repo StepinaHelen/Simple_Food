@@ -12,16 +12,16 @@ import { useQuery } from "react-query";
 import Modal from "../Modals/Modal";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
-import {KEYQUERIES}  from '../../common/constants'
+import { KEYQUERIES } from "../../common/constants";
 
 function CardList() {
   const [btn, setBtn] = useState("active");
   const [choosenCategory, setChoosenCategory] = useState(null);
-
   const navigate = useNavigate();
 
-  const { data, error, isLoading } = useQuery([KEYQUERIES.cards, choosenCategory], () =>
-    getCards(choosenCategory)
+  const { data, error, isLoading } = useQuery(
+    [KEYQUERIES.cards, choosenCategory],
+    () => getCards(choosenCategory)
   );
 
   const filterHandler = (category) => {

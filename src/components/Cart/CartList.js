@@ -13,7 +13,7 @@ const CartList = () => {
 
   return (
     <CommonContainer withMargin={true}>
-      {cartContext.items.length > 0 && (
+      {cartContext.items && cartContext.items.length > 0 && (
         <>
           <List>
             {cartContext.items.map((el) => (
@@ -36,7 +36,7 @@ const CartList = () => {
           </Link>
         </>
       )}
-      {!cartContext.items.length && (
+      {!cartContext.items?.length && (
         <Notice
           title="You don't have any items in your cart!"
           message="Please add some food to the cart. We're waiting for you :)"
