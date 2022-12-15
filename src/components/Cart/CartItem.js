@@ -18,7 +18,7 @@ const CartItem = (props) => {
         <AmountWrapper>
           <p>Amount: {props.amount}</p>
         </AmountWrapper>
-        <BtnWrapper onClick={deleteFromCartHandler}>
+        <BtnWrapper onClick={deleteFromCartHandler} data-testid="delete-btn">
           <Icons name="trash" classes={"trash"} />
         </BtnWrapper>
       </WraperItem>

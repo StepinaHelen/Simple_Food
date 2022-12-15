@@ -14,8 +14,6 @@ const cardItem = {
   img: "https://www.eatwell101.com/wp-content/uploads/2018/04/Shrimp-Zucchini-Noodles.jpg",
 };
 
-const valueContext = { items: [] };
-
 describe("test CardItem", () => {
   it("CardItem renders", () => {
     render(<CardItem {...cardItem} />);
@@ -58,6 +56,7 @@ describe("test CardItem", () => {
     await userEvent.click(incrementBtn);
     expect(value.textContent).toContain("1");
   });
+
   it("click on the Add button", async () => {
     const addItem = jest.fn(() => console.log(1));
     render(

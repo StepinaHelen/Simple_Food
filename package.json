@@ -46,7 +46,8 @@
     "test:watch": "npm test -- --watch",
     "test:coverage": "npm test -- --coverage",
     "eject": "react-scripts eject",
-    "server": "json-server --watch db.json"
+    "server": "json-server --watch db.json",
+    "coverage": "react-scripts test --env=jsdom --watchAll=true --coverage"
   },
   "eslintConfig": {
     "extends": [

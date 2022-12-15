@@ -54,6 +54,7 @@ function CardList() {
               className={"categories"}
               key={el}
               onClick={() => filterHandler(el)}
+              value={el}
             >
               {el}
             </Button>
