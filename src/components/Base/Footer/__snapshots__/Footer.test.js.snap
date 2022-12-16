@@ -1,0 +1,198 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test Footer Footer snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": .c1 {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c0 {
+  background-color: #6b068a;
+  color: white;
+  width: 100%;
+  display: block;
+}
+
+.c2 {
+  font-size: 16px;
+  line-height: 19px;
+  margin: 0 auto;
+}
+
+.c2 p {
+  padding: 40px 0;
+  text-align: center;
+  margin: 0px;
+}
+
+.c2 span {
+  color: red;
+}
+
+@media screen and (min-width:480px) {
+  .c1 {
+    width: 480px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c1 {
+    width: 768px;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c1 {
+    width: 1200px;
+  }
+}
+
+<body>
+    <div>
+      <footer
+        class="c0"
+      >
+        <div
+          class="c1"
+        >
+          <div
+            class="c2"
+          >
+            <p>
+              © 2022 | All Rights Reserved | Developed with  
+              <span>
+                ❤
+              </span>
+                by Stepina Helen
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>,
+  "container": .c1 {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c0 {
+  background-color: #6b068a;
+  color: white;
+  width: 100%;
+  display: block;
+}
+
+.c2 {
+  font-size: 16px;
+  line-height: 19px;
+  margin: 0 auto;
+}
+
+.c2 p {
+  padding: 40px 0;
+  text-align: center;
+  margin: 0px;
+}
+
+.c2 span {
+  color: red;
+}
+
+@media screen and (min-width:480px) {
+  .c1 {
+    width: 480px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c1 {
+    width: 768px;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c1 {
+    width: 1200px;
+  }
+}
+
+<div>
+    <footer
+      class="c0"
+    >
+      <div
+        class="c1"
+      >
+        <div
+          class="c2"
+        >
+          <p>
+            © 2022 | All Rights Reserved | Developed with  
+            <span>
+              ❤
+            </span>
+              by Stepina Helen
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
