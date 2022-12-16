@@ -14,10 +14,12 @@ const cardItem = {
   img: "https://www.eatwell101.com/wp-content/uploads/2018/04/Shrimp-Zucchini-Noodles.jpg",
 };
 
+const mockTitle = "Noodles with shrimp";
+
 describe("test CardItem", () => {
   it("CardItem renders", () => {
     render(<CardItem {...cardItem} />);
-    expect(screen.getByText("Noodles with shrimp")).toBeInTheDocument();
+    expect(screen.getByText(mockTitle)).toBeInTheDocument();
     const img = screen.getByRole("img");
     expect(img.src).toContain(
       "https://www.eatwell101.com/wp-content/uploads/2018/04/Shrimp-Zucchini-Noodles.jpg"
@@ -26,7 +28,7 @@ describe("test CardItem", () => {
 
   it("CardItem renders without data", () => {
     render(<CardItem />);
-    expect(screen.queryByText("Noodles with shrimp")).toBeNull();
+    expect(screen.queryByText(mockTitle)).toBeNull();
   });
 
   it("CardItem snapshot", () => {

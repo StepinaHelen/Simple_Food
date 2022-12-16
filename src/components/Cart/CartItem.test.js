@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "../../test-utils";
+import { render, screen } from "../../test-utils";
 import userEvent from "@testing-library/user-event";
 import CartItem from "./CartItem";
 
@@ -13,10 +13,12 @@ const mockedCartLists = {
   img: "https://www.eatwell101.com/wp-content/uploads/2018/04/Shrimp-Zucchini-Noodles.jpg",
 };
 
+const mockTitle = "Noodles with shrimp";
+
 describe("test CartItem", () => {
   it("CartItem renders", () => {
     render(<CartItem {...mockedCartLists} />);
-    expect(screen.getByText("Noodles with shrimp")).toBeInTheDocument();
+    expect(screen.getByText(mockTitle)).toBeInTheDocument();
     const img = screen.getByRole("img");
     expect(img.src).toContain(
       "https://www.eatwell101.com/wp-content/uploads/2018/04/Shrimp-Zucchini-Noodles.jpg"
@@ -25,7 +27,7 @@ describe("test CartItem", () => {
 
   it("CartItem renders without data", () => {
     render(<CartItem />);
-    expect(screen.queryByText("Noodles with shrimp")).toBeNull();
+    expect(screen.queryByText(mockTitle)).toBeNull();
   });
 
   it("CartItem snapshot", () => {
