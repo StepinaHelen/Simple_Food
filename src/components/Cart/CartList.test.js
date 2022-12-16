@@ -1,7 +1,5 @@
 import { render, screen } from "../../test-utils";
-
 import CartList from "./CartList";
-
 import CartContext from "../../store/cart-context";
 
 const moсkedList = [

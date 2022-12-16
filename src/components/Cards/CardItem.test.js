@@ -60,7 +60,7 @@ describe("test CardItem", () => {
   });
 
   it("click on the Add button", async () => {
-    const addItem = jest.fn(() => console.log(1));
+    const addItem = jest.fn();
     render(
       <CartContext.Provider
         value={{
@@ -71,7 +71,7 @@ describe("test CardItem", () => {
         <CartList />
       </CartContext.Provider>
     );
-    fireEvent.click(screen.getByText(/Add/));
+    userEvent.click(screen.getByText(/Add/));
     expect(addItem).toHaveBeenCalledTimes(1);
   });
 });

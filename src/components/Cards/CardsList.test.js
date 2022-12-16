@@ -1,5 +1,5 @@
 import CardList from "./CardsList";
-import { render, screen } from "../../test-utils";
+import { render, screen, waitFor } from "../../test-utils";
 import userEvent from "@testing-library/user-event";
 
 const mockTitle = "Noodles with shrimp";
@@ -13,14 +13,18 @@ describe("cardList", () => {
   it("test click on sort", async () => {
     render(<CardList />);
     const sortBtn = await screen.findByTestId("sort");
-    await userEvent.click(sortBtn);
+    userEvent.click(sortBtn);
     expect(JSON.parse(localStorage.getItem("sorting"))).toBeTruthy();
   });
 
   it("test click on filter setItem", async () => {
     render(<CardList />);
-    const filterBtn = screen.getByRole("button", { name: "Pizza" });
-    await userEvent.click(filterBtn);
-    expect(JSON.parse(localStorage.getItem("category"))).toStrictEqual("Pizza");
+    const filterBtn = await screen.findByText("Pizza");
+    userEvent.click(filterBtn);
+    await waitFor(() => {
+      expect(JSON.parse(localStorage.getItem("category"))).toStrictEqual(
+        "Pizza"
+      );
+    });
   });
 });
