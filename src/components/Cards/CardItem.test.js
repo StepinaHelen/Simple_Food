@@ -55,7 +55,7 @@ describe("test CardItem", () => {
     const incrementBtn = screen.getByRole("button", { name: "-" });
     const value = await screen.findByTestId("value");
     expect(value.textContent).toContain("1");
-    await userEvent.click(incrementBtn);
+    userEvent.click(incrementBtn);
     expect(value.textContent).toContain("1");
   });
 
