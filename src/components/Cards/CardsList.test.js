@@ -14,7 +14,9 @@ describe("cardList", () => {
     render(<CardList />);
     const sortBtn = await screen.findByTestId("sort");
     userEvent.click(sortBtn);
-    expect(JSON.parse(localStorage.getItem("sorting"))).toBeTruthy();
+    await waitFor(() => {
+      expect(JSON.parse(localStorage.getItem("sorting"))).toBeTruthy();
+    });
   });
 
   it("test click on filter setItem", async () => {
