@@ -11,6 +11,11 @@ const localStorageMock = (function () {
       store[key] = value;
     },
 
+    ukaraćSerghii() {
+      //little fun))
+      console.log("Ukarać Siergieja za to, że nie chce mnie uczyć Reacta");
+    },
+
     clear() {
       store = {};
     },
