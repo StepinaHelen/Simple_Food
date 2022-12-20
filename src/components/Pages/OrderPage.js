@@ -48,7 +48,6 @@ const OrderPage = () => {
           onCloseModal={modalHandler}
         />
       )}
-      {/* {isLoading && <Spinner />} */}
 
       {isError && error.message && (
         <Modal title={error.message} onCloseModal={modalHandler} />

@@ -5,7 +5,6 @@ import { BackdropWrapper, ModalWrapper } from "./ModalsStyles";
 
 const modalRoot = document.createElement("div");
 modalRoot.setAttribute("id", "modal-root");
-// const portalElement = document.getElementById("overlay");
 document.body.appendChild(modalRoot);
 
 const Modal = (props) => {

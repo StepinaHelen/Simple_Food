@@ -1,6 +1,5 @@
 import OrderPage from "./OrderPage";
 import { render, screen, waitFor, fireEvent } from "../../test-utils";
-import userEvent from "@testing-library/user-event";
 import CartContext from "../../store/cart-context";
 
 let moсkedList = [

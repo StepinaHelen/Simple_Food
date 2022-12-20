@@ -1,5 +1,6 @@
 import { FormWrapper } from "./OrdersStyles";
 import { Form, Field, useFormikContext } from "formik";
+import { FORMS_FIELD } from "../../common/constants";
 
 const OrderForm = () => {
   const { errors, touched } = useFormikContext();
@@ -9,31 +10,17 @@ const OrderForm = () => {
       <FormWrapper>
         <h2>Order summaries:</h2>
         <Form>
-          <label className="control">
-            First Name
-            <Field name="name" />
-            {errors.name && touched.name ? <p>{errors.name}</p> : null}
-          </label>
-          <label className="control">
-            Last Name
-            <Field name="surName" />
-            {errors.surName && touched.surName ? <p>{errors.surName}</p> : null}
-          </label>
-          <label className="control">
-            Phone number
-            <Field name="phone" type="number" />
-            {errors.phone && touched.phone ? <p>{errors.phone}</p> : null}
-          </label>
-          <label className="control">
-            City
-            <Field name="city" type="text" />
-            {errors.city && touched.city ? <p>{errors.city}</p> : null}
-          </label>
-          <label className="control">
-            Street
-            <Field name="street" type="text" />
-            {errors.street && touched.street ? <p>{errors.street}</p> : null}
-          </label>
+          {FORMS_FIELD.map((el) => {
+            return (
+              <label key={el.id} className="control">
+                {el.title}
+                <Field name={el.name} />
+                {errors[el.name] && touched[el.name] ? (
+                  <p>{errors[el.name]}</p>
+                ) : null}
+              </label>
+            );
+          })}
         </Form>
       </FormWrapper>
     </>
