@@ -55,12 +55,13 @@ function CardList() {
               key={el}
               onClick={() => filterHandler(el)}
               value={el}
+              data-testid="filter"
             >
               {el}
             </Button>
           ))}
         </div>
-        <Btn onClick={sortedHandler}>
+        <Btn onClick={sortedHandler} data-testid="sort">
           <Icons name="arrows" classes={"arrow"} />
         </Btn>
       </SortWrapper>
@@ -68,7 +69,11 @@ function CardList() {
 
       <List>
         {error && error.message && (
-          <Modal title={error.message} onCloseModal={modalHandler} />
+          <Modal
+            title={error.message}
+            onCloseModal={modalHandler}
+            data-testid="modal"
+          />
         )}
         {data &&
           data.map((el) => (

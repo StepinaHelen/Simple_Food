@@ -27,7 +27,7 @@ const OrderPage = () => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const cartContext = useContext(CartContext);
-  const { mutate, error, isLoading } = useMutation(postOrderToHistory);
+  const { mutate, error, isError } = useMutation(postOrderToHistory);
 
   const modalHandler = () => {
     navigate("/order-history");
@@ -48,37 +48,29 @@ const OrderPage = () => {
           onCloseModal={modalHandler}
         />
       )}
-      {isLoading && <Spinner />}
 
-      {error && error.message && (
+      {isError && error.message && (
         <Modal title={error.message} onCloseModal={modalHandler} />
       )}
-      <Formik
-        initialValues={initialFormState}
-        validationSchema={OrderSchema}
-        onSubmit={submitHandler}
-      >
-        {({ submitForm }) => (
-          <CommonContainer withMargin={true}>
-            <Wrapper>
-              <OrderContainer>
-                <OrderForm></OrderForm>
-
-                <ShadowContainer withShadow={"withShadow"}>
-                  <OrderList
-                    orderItems={cartContext.items}
-                    totalAmount={cartContext.totalAmount}
-                  ></OrderList>
-                </ShadowContainer>
-              </OrderContainer>
-              <BtnContainer>
-                <Button className={"order"} onClick={submitForm} type="button">
-                  Order <Icons name="check" classes={"icon"} />
-                </Button>
-              </BtnContainer>
-            </Wrapper>
-          </CommonContainer>
-        )}
+      <Formik initialValues={initialFormState} validationSchema={OrderSchema}>
+        <CommonContainer withMargin={true}>
+          <Wrapper>
+            <OrderContainer>
+              <OrderForm></OrderForm>
+              <ShadowContainer withShadow={"withShadow"}>
+                <OrderList
+                  orderItems={cartContext.items}
+                  totalAmount={cartContext.totalAmount}
+                ></OrderList>
+              </ShadowContainer>
+            </OrderContainer>
+            <BtnContainer>
+              <Button className={"order"} onClick={submitHandler} type="submit">
+                Order <Icons name="check" classes={"icon"} />
+              </Button>
+            </BtnContainer>
+          </Wrapper>
+        </CommonContainer>
       </Formik>
     </>
   );

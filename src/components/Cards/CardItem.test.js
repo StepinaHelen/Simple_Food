@@ -4,17 +4,7 @@ import CardItem from "./CardItem";
 
 import CartContext from "../../store/cart-context";
 import CartList from "../../components/Cart/CartList";
-
-const cardItem = {
-  id: 15,
-  title: "Noodles with shrimp",
-  price: 25,
-  category: "noodles",
-  amount: 1,
-  img: "https://www.eatwell101.com/wp-content/uploads/2018/04/Shrimp-Zucchini-Noodles.jpg",
-};
-
-const mockTitle = "Noodles with shrimp";
+import { cardItem, mockTitle } from "../../common/test-constants";
 
 describe("test CardItem", () => {
   it("CardItem renders", () => {
@@ -55,12 +45,12 @@ describe("test CardItem", () => {
     const incrementBtn = screen.getByRole("button", { name: "-" });
     const value = await screen.findByTestId("value");
     expect(value.textContent).toContain("1");
-    await userEvent.click(incrementBtn);
+    userEvent.click(incrementBtn);
     expect(value.textContent).toContain("1");
   });
 
   it("click on the Add button", async () => {
-    const addItem = jest.fn(() => console.log(1));
+    const addItem = jest.fn();
     render(
       <CartContext.Provider
         value={{
@@ -71,7 +61,7 @@ describe("test CardItem", () => {
         <CartList />
       </CartContext.Provider>
     );
-    fireEvent.click(screen.getByText(/Add/));
+    userEvent.click(screen.getByText(/Add/));
     expect(addItem).toHaveBeenCalledTimes(1);
   });
 });

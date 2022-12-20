@@ -7,61 +7,13 @@ import {
 
 import { rest } from "msw";
 import { setupServer } from "msw/node";
-
-const mockedLists = [
-  {
-    id: 15,
-    title: "Noodles with shrimp",
-    price: 25,
-    category: "noodles",
-    amount: 1,
-    img: "https://www.eatwell101.com/wp-content/uploads/2018/04/Shrimp-Zucchini-Noodles.jpg",
-  },
-  {
-    id: 16,
-    title: "Hawaiian pizza",
-    price: 25,
-    category: "pizza",
-    amount: 1,
-    img: "https://distfood.ru/upload/medialibrary/86a/86ab43892301045cb950f9874be29805.jpg",
-  },
-];
-
-const mockedOrdersHistory = [
-  {
-    name: "Helen",
-    surName: "Stepina",
-    phone: "phone",
-    city: "Wroclaw",
-    street: "lotnicza",
-    date: new Date(),
-    items: mockedLists,
-    totalAmount: 50,
-  },
-];
-const form = {
-  name: "Helen",
-  surName: "Stepina",
-  phone: "phone",
-  city: "Wroclaw",
-  street: "lotnicza",
-  date: new Date(),
-};
-const cartContext = {
-  items: mockedLists,
-  totalAmount: 50,
-};
-
-const newOrderToHistory = {
-  name: "Helen2",
-  surName: "Stepina2",
-  phone: "phone2",
-  city: "Wroclaw2",
-  street: "lotnicza2",
-  date: new Date(),
-  items: mockedLists,
-  totalAmount: 50,
-};
+import {
+  mockedLists,
+  mockedOrdersHistory,
+  newOrderToHistory,
+  form,
+  cartContext,
+} from "../common/test-constants";
 
 const server = setupServer(
   rest.get("http://localhost:3000/foods", (req, res, ctx) => {

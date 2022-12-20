@@ -2,10 +2,13 @@ import * as Yup from "yup";
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
+const alphabeticRegExp = /^[a-z]+$/;
+
 export const stringMinMaxRequired = Yup.string()
   .min(3, "Too short!")
   .max(50, "Too long!")
-  .required("Required");
+  .required("Required")
+  .matches(alphabeticRegExp, "Only letters allowed");
 
 export const phoneValidRequired = Yup.string()
   .required("Required")
