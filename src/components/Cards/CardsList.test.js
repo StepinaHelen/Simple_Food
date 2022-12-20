@@ -1,8 +1,7 @@
 import CardList from "./CardsList";
 import { render, screen, waitFor } from "../../test-utils";
 import userEvent from "@testing-library/user-event";
-
-const mockTitle = "Noodles with shrimp";
+import { mockTitle } from "../../common/test-constants";
 
 describe("cardList", () => {
   it("render cardList", async () => {

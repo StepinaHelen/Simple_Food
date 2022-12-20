@@ -4,17 +4,7 @@ import CardItem from "./CardItem";
 
 import CartContext from "../../store/cart-context";
 import CartList from "../../components/Cart/CartList";
-
-const cardItem = {
-  id: 15,
-  title: "Noodles with shrimp",
-  price: 25,
-  category: "noodles",
-  amount: 1,
-  img: "https://www.eatwell101.com/wp-content/uploads/2018/04/Shrimp-Zucchini-Noodles.jpg",
-};
-
-const mockTitle = "Noodles with shrimp";
+import { cardItem, mockTitle } from "../../common/test-constants";
 
 describe("test CardItem", () => {
   it("CardItem renders", () => {
