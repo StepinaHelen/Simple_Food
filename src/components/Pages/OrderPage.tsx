@@ -10,17 +10,10 @@ import ShadowContainer from "../Base/Containers/ShadowContainer";
 import Modal from "../Modals/Modal";
 import { OrderContainer, BtnContainer, Wrapper } from "./PagesStyles";
 import { postOrderToHistory } from "../../services/common-service";
-import { Formik, FormikHelpers } from "formik";
+import { Formik, FormikProps } from "formik";
 import { OrderSchema } from "../../common/utils";
 import { useMutation } from "react-query";
-import Spinner from "../Spinner/Spinner";
-import {
-  ICardItem,
-  IForm,
-  ICartContext,
-  IOrdersHistoryItem,
-  IPost_Query_Form,
-} from "../../common/interfaces";
+import { IForm, IPost_Query_Form } from "../../common/interfaces";
 
 const initialFormState: IForm = {
   name: "",
@@ -64,26 +57,34 @@ const OrderPage = () => {
       <Formik
         initialValues={initialFormState}
         validationSchema={OrderSchema}
-        onSubmit={submitHandler}
+        onSubmit={(form: IForm) => {
+          submitHandler(form);
+        }}
       >
-        <CommonContainer withMargin={true}>
-          <Wrapper>
-            <OrderContainer>
-              <OrderForm></OrderForm>
-              <ShadowContainer withShadow={true}>
-                <OrderList
-                  orderItems={cartContext.items}
-                  totalAmount={cartContext.totalAmount}
-                ></OrderList>
-              </ShadowContainer>
-            </OrderContainer>
-            <BtnContainer>
-              <Button className={"order"} onClick={submitHandler} type="submit">
-                Order <Icons name="check" classes={"icon"} />
-              </Button>
-            </BtnContainer>
-          </Wrapper>
-        </CommonContainer>
+        {(formikProps: FormikProps<IForm>) => (
+          <CommonContainer withMargin={true}>
+            <Wrapper>
+              <OrderContainer>
+                <OrderForm></OrderForm>
+                <ShadowContainer withShadow={true}>
+                  <OrderList
+                    orderItems={cartContext.items}
+                    totalAmount={cartContext.totalAmount}
+                  ></OrderList>
+                </ShadowContainer>
+              </OrderContainer>
+              <BtnContainer>
+                <Button
+                  className={"order"}
+                  type="submit"
+                  onClick={formikProps.handleSubmit}
+                >
+                  Order <Icons name="check" classes={"icon"} />
+                </Button>
+              </BtnContainer>
+            </Wrapper>
+          </CommonContainer>
+        )}
       </Formik>
     </>
   );

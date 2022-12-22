@@ -2,7 +2,6 @@ import axios from "axios";
 import { getLocalStorageItem } from "./persistence-service";
 import {
   ICardItem,
-  IOrders,
   IOrdersHistoryItem,
   IPost_Query_Form,
 } from "../common/interfaces";
@@ -22,7 +21,7 @@ export const postOrderToHistory = async ({
     date: new Date(),
   });
 };
-// : Promise<IOrders[]>
+
 export const getOrders = () => {
   return axios.get(`${process.env.REACT_APP_API_URL}/orders`);
 };
