@@ -14,8 +14,8 @@ import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 import { KEYQUERIES } from "../../common/constants";
-import { IOrdersQuery, IOrdersHistoryItem } from "../../common/interfaces";
-//fix
+import { IOrdersQuery } from "../../common/interfaces";
+
 const OrdersHistoryItem = () => {
   const { isLoading, data, error } = useQuery<IOrdersQuery, Error>(
     KEYQUERIES.orders,
@@ -45,7 +45,7 @@ const OrdersHistoryItem = () => {
 
         {data && data.data.length > 0 && (
           <>
-            {data.data.map((el: IOrdersHistoryItem) => {
+            {data.data.map((el) => {
               return (
                 <Wrapper key={el.id}>
                   <DetailsContainer>

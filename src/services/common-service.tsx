@@ -46,14 +46,14 @@ export const getCards = async (inputCategory: string): Promise<ICardItem[]> => {
   const category = inputCategory || getLocalStorageItem("category") || null;
   const sorting = getLocalStorageItem("sorting");
   return await axios
-    .get(`${process.env.REACT_APP_API_URL}/foods`)
+    .get<ICardItem[]>(`${process.env.REACT_APP_API_URL}/foods`)
     .then((res) => {
       let results = [];
       if (category === "All" || category === null) {
         results = res.data;
       } else {
         const result = res.data.filter(
-          (el: ICardItem) => el.category === category.toLowerCase()
+          (el) => el.category === category.toLowerCase()
         );
         results = result;
       }

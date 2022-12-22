@@ -6,7 +6,7 @@ const Button = (props: IBtnProps) => {
     <Btn
       type={props.type || "button"}
       className={props.className}
-      onClick={props.onClick}
+      onClick={(e) => props.onClick?.(e)}
       disabled={props.disabled}
     >
       {props.children}

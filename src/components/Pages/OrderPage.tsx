@@ -77,7 +77,9 @@ const OrderPage = () => {
                 <Button
                   className={"order"}
                   type="submit"
-                  onClick={formikProps.handleSubmit}
+                  onClick={() => {
+                    formikProps.submitForm();
+                  }}
                 >
                   Order <Icons name="check" classes={"icon"} />
                 </Button>

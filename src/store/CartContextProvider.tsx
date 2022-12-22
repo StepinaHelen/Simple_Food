@@ -24,17 +24,19 @@ const cartReducer = (
   state: ICartContextState,
   action: CartActions
 ): ICartContextState => {
-  if (action.type === ICardActionTypes.addItem) {
-    return addItemHandler(state, action);
-  }
-  if (action.type === ICardActionTypes.removeItem) {
-    return removeItemHandler(state, action);
-  }
-  if (action.type === ICardActionTypes.clearCart) {
-    return clearCartHandler();
-  }
+  switch (action.type) {
+    case ICardActionTypes.addItem:
+      return addItemHandler(state, action);
 
-  return defaultCartState;
+    case ICardActionTypes.removeItem:
+      return removeItemHandler(state, action);
+
+    case ICardActionTypes.clearCart:
+      return clearCartHandler();
+
+    default:
+      return defaultCartState;
+  }
 };
 
 const CartContextProvider = (props: PropsWithChildren) => {

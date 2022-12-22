@@ -41,6 +41,10 @@ export const WraperItem = styled.div`
     font-size: 22px;
     line-height: 28px;
     margin-bottom: 20px;
+    text-overflow: ellipsis;
+    /* width: 220px; */
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   p {

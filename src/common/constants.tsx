@@ -11,7 +11,7 @@ export const TYPES_LIST: ITYPES_LIST = {
   clearCart: "CLEAR_CART",
 };
 
-export const CATEGORIES: Array<string> = [
+export const CATEGORIES: string[] = [
   "All",
   "Pizza",
   "Sushi",

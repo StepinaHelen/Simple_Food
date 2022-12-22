@@ -93,7 +93,7 @@ export interface ISVG {
 export interface IBtnProps {
   type?: "button" | "submit" | "reset" | undefined;
   className?: string;
-  onClick?: (form?: any) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   disabled?: boolean;
   children?: ReactNode;
   min?: string;
