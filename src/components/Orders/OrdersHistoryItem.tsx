@@ -14,9 +14,13 @@ import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 import { KEYQUERIES } from "../../common/constants";
+import { IOrdersQuery } from "../../common/interfaces";
 
 const OrdersHistoryItem = () => {
-  const { isLoading, data, error } = useQuery(KEYQUERIES.orders, getOrders);
+  const { isLoading, data, error } = useQuery<IOrdersQuery, Error>(
+    KEYQUERIES.orders,
+    getOrders
+  );
   const navigate = useNavigate();
 
   const modalHandler = () => {
@@ -74,7 +78,7 @@ const OrdersHistoryItem = () => {
                     </div>
                   </DetailsContainer>
                   <hr />
-                  <ShadowContainer>
+                  <ShadowContainer withShadow={false}>
                     <OrderList
                       orderItems={el.items}
                       totalAmount={el.totalAmount}

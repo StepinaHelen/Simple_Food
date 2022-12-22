@@ -1,6 +1,7 @@
 import { EmptyWrapper } from "./ContainersStyles";
+import { IShadowContainerProps } from "../../../common/interfaces";
 
-const ShadowContainer = (props) => {
+const ShadowContainer = (props: IShadowContainerProps) => {
   return (
     <EmptyWrapper $withShadow={props.withShadow}>{props.children}</EmptyWrapper>
   );

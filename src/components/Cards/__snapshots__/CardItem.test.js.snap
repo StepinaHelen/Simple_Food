@@ -96,6 +96,9 @@ Object {
   font-size: 22px;
   line-height: 28px;
   margin-bottom: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .c1 p {
@@ -183,6 +186,7 @@ Object {
         class="c0"
       >
         <img
+          alt="Noodles with shrimp"
           src="https://www.eatwell101.com/wp-content/uploads/2018/04/Shrimp-Zucchini-Noodles.jpg"
         />
         <div
@@ -206,7 +210,6 @@ Object {
               Amount:
             </p>
             <button
-              min="0"
               type="button"
             >
               -
@@ -329,6 +332,9 @@ Object {
   font-size: 22px;
   line-height: 28px;
   margin-bottom: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .c1 p {
@@ -415,6 +421,7 @@ Object {
       class="c0"
     >
       <img
+        alt="Noodles with shrimp"
         src="https://www.eatwell101.com/wp-content/uploads/2018/04/Shrimp-Zucchini-Noodles.jpg"
       />
       <div
@@ -438,7 +445,6 @@ Object {
             Amount:
           </p>
           <button
-            min="0"
             type="button"
           >
             -
@@ -617,6 +623,9 @@ Object {
   font-size: 22px;
   line-height: 28px;
   margin-bottom: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .c1 p {
@@ -722,7 +731,6 @@ Object {
               Amount:
             </p>
             <button
-              min="0"
               type="button"
             >
               -
@@ -845,6 +853,9 @@ Object {
   font-size: 22px;
   line-height: 28px;
   margin-bottom: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .c1 p {
@@ -949,7 +960,6 @@ Object {
             Amount:
           </p>
           <button
-            min="0"
             type="button"
           >
             -

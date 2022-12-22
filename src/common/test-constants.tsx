@@ -1,4 +1,12 @@
-export const cardItem = {
+import {
+  ICartContextState,
+  IForm,
+  ICardItem,
+  IOrdersHistoryItem,
+  IOrders,
+} from "./interfaces";
+
+export const cardItem: ICardItem = {
   id: 15,
   title: "Noodles with shrimp",
   price: 25,
@@ -7,9 +15,9 @@ export const cardItem = {
   img: "https://www.eatwell101.com/wp-content/uploads/2018/04/Shrimp-Zucchini-Noodles.jpg",
 };
 
-export const mockTitle = "Noodles with shrimp";
+export const mockTitle: string = "Noodles with shrimp";
 
-export const mockedData = {
+export const mockedData: IOrders = {
   orderItems: [
     {
       id: 15,
@@ -31,7 +39,7 @@ export const mockedData = {
   ],
 };
 
-export const mockedLists = [
+export const mockedLists: ICardItem[] = [
   {
     id: 15,
     title: "Noodles with shrimp",
@@ -50,28 +58,29 @@ export const mockedLists = [
   },
 ];
 
-export const mockedOrdersHistory = [
+export const mockedOrdersHistory: IOrdersHistoryItem[] = [
   {
+    id: 1,
     name: "Helen",
     surName: "Stepina",
     phone: "phone",
     city: "Wroclaw",
     street: "lotnicza",
-    date: new Date(),
+    date: "Wed Dec 21 2022 12:18:55 GMT+0100 (Central European Standard Time)",
     items: mockedLists,
     totalAmount: 50,
   },
 ];
-export const form = {
+export const form: IForm = {
   name: "Helen",
   surName: "Stepina",
   phone: "phone",
   city: "Wroclaw",
   street: "lotnicza",
-  date: new Date(),
+  date: "22 Jan",
 };
 
-export const cartContext = {
+export const cartContext: ICartContextState = {
   items: mockedLists,
   totalAmount: 50,
 };
@@ -82,7 +91,7 @@ export const newOrderToHistory = {
   phone: "0973601111",
   city: "Wroclaw",
   street: "Lotnicza",
-  date: new Date(),
+  date: "Wed Dec 21 2022 12:18:55 GMT+0100 (Central European Standard Time)",
   items: mockedLists,
   totalAmount: 50,
 };

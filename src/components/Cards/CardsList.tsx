@@ -2,7 +2,7 @@ import CardItem from "./CardItem";
 import Button from "../Button/Button";
 import CommonContainer from "../Base/Containers/CommonContainer";
 import Icons from "../SvgComponent/SvgComponent";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { SortWrapper } from "./CardsStyles";
 import { CATEGORIES } from "../../common/constants";
 import { List, Btn } from "./CardsStyles";
@@ -13,18 +13,19 @@ import Modal from "../Modals/Modal";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 import { KEYQUERIES } from "../../common/constants";
+import { ICardItem } from "../../common/interfaces";
 
 function CardList() {
   const [btn, setBtn] = useState("active");
-  const [choosenCategory, setChoosenCategory] = useState(null);
+  const [choosenCategory, setChoosenCategory] = useState("");
   const navigate = useNavigate();
 
-  const { data, error, isLoading } = useQuery(
+  const { data, error, isLoading } = useQuery<ICardItem[], Error>(
     [KEYQUERIES.cards, choosenCategory],
     () => getCards(choosenCategory)
   );
 
-  const filterHandler = (category) => {
+  const filterHandler = (category: SetStateAction<string>) => {
     setChoosenCategory(category);
     setLocalStorageItem("category", category);
   };
@@ -33,20 +34,20 @@ function CardList() {
     navigate("/");
   };
 
-  const sortedHandler = () => {
+  const sortedHandler = (): void => {
     if (btn === "inactive") {
-      multiSortHandler(1, -1, data);
+      multiSortHandler(1, -1, data ?? []);
       setLocalStorageItem("sorting", "ascending");
       setBtn("active");
     } else {
-      multiSortHandler(-1, 1, data);
+      multiSortHandler(-1, 1, data ?? []);
       setLocalStorageItem("sorting", "descending");
       setBtn("inactive");
     }
   };
 
   return (
-    <CommonContainer>
+    <CommonContainer withMargin={false}>
       <SortWrapper>
         <div>
           {CATEGORIES.map((el) => (
@@ -54,7 +55,6 @@ function CardList() {
               className={"categories"}
               key={el}
               onClick={() => filterHandler(el)}
-              value={el}
               data-testid="filter"
             >
               {el}

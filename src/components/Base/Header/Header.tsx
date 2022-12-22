@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <React.Fragment>
       <HeaderContainer>
-        <CommonContainer>
+        <CommonContainer withMargin={false}>
           <HeaderWrapper>
             <Link to={"/"}>
               <Icons name="logo" classes={"icon"} />

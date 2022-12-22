@@ -1,6 +1,7 @@
 import { ListItems, AmountContainer, WrapperList } from "./OrdersStyles";
+import { IOrdersPageProps } from "../../common/interfaces";
 
-const OrderList = (props) => {
+const OrderList = (props: IOrdersPageProps) => {
   return (
     <>
       <WrapperList>
@@ -19,7 +20,7 @@ const OrderList = (props) => {
         </ul>
       </WrapperList>
       <AmountContainer>
-        <h3>Amount: {props.amount}</h3>
+        <h3>Amount:</h3>
         <p className="amount">{props.totalAmount}$</p>
       </AmountContainer>
     </>

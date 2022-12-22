@@ -33,6 +33,11 @@ Object {
   color: red;
 }
 
+.c2 a {
+  color: white;
+  display: inline-block;
+}
+
 @media screen and (min-width:480px) {
   .c1 {
     width: 480px;
@@ -67,7 +72,12 @@ Object {
               <span>
                 ❤
               </span>
-                by Stepina Helen
+                by
+              <a
+                href="https://www.linkedin.com/in/helen-stepina-a5b8b8211/"
+              >
+                Stepina Helen
+              </a>
             </p>
           </div>
         </div>
@@ -104,6 +114,11 @@ Object {
   color: red;
 }
 
+.c2 a {
+  color: white;
+  display: inline-block;
+}
+
 @media screen and (min-width:480px) {
   .c1 {
     width: 480px;
@@ -137,7 +152,12 @@ Object {
             <span>
               ❤
             </span>
-              by Stepina Helen
+              by
+            <a
+              href="https://www.linkedin.com/in/helen-stepina-a5b8b8211/"
+            >
+              Stepina Helen
+            </a>
           </p>
         </div>
       </div>

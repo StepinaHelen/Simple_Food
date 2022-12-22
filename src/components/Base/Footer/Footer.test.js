@@ -1,4 +1,4 @@
-import { render } from "../../../test-utils";
+import { render, screen } from "../../../test-utils";
 import Footer from "./Footer";
 describe("test Footer", () => {
   it("Footer renders", () => {
@@ -7,5 +7,9 @@ describe("test Footer", () => {
   it("Footer snapshot", () => {
     const view = render(<Footer />);
     expect(view).toMatchSnapshot();
+  });
+  it("check Footer text", () => {
+    render(<Footer />);
+    expect(screen.getByText("Stepina Helen")).toBeInTheDocument();
   });
 });

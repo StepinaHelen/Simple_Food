@@ -4,4 +4,5 @@ module.exports = {
   clearMocks: true,
   testEnvironment: "jsdom",
   verbose: true,
+  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
 };
