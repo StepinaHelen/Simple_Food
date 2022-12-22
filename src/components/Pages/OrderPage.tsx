@@ -10,12 +10,19 @@ import ShadowContainer from "../Base/Containers/ShadowContainer";
 import Modal from "../Modals/Modal";
 import { OrderContainer, BtnContainer, Wrapper } from "./PagesStyles";
 import { postOrderToHistory } from "../../services/common-service";
-import { Formik } from "formik";
+import { Formik, FormikHelpers } from "formik";
 import { OrderSchema } from "../../common/utils";
 import { useMutation } from "react-query";
 import Spinner from "../Spinner/Spinner";
+import {
+  ICardItem,
+  IForm,
+  ICartContext,
+  IOrdersHistoryItem,
+  IPost_Query_Form,
+} from "../../common/interfaces";
 
-const initialFormState = {
+const initialFormState: IForm = {
   name: "",
   surName: "",
   phone: "",
@@ -27,13 +34,15 @@ const OrderPage = () => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const cartContext = useContext(CartContext);
-  const { mutate, error, isError } = useMutation(postOrderToHistory);
+  const { mutate, error, isError } = useMutation<any, Error, IPost_Query_Form>(
+    postOrderToHistory
+  );
 
-  const modalHandler = () => {
+  const modalHandler = (): void => {
     navigate("/order-history");
   };
 
-  const submitHandler = (form) => {
+  const submitHandler = (form: IForm): void => {
     mutate({ form, cartContext });
     setShowModal(true);
     cartContext.clearCart();
@@ -52,12 +61,16 @@ const OrderPage = () => {
       {isError && error.message && (
         <Modal title={error.message} onCloseModal={modalHandler} />
       )}
-      <Formik initialValues={initialFormState} validationSchema={OrderSchema}>
+      <Formik
+        initialValues={initialFormState}
+        validationSchema={OrderSchema}
+        onSubmit={submitHandler}
+      >
         <CommonContainer withMargin={true}>
           <Wrapper>
             <OrderContainer>
               <OrderForm></OrderForm>
-              <ShadowContainer withShadow={"withShadow"}>
+              <ShadowContainer withShadow={true}>
                 <OrderList
                   orderItems={cartContext.items}
                   totalAmount={cartContext.totalAmount}

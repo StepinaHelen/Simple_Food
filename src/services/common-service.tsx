@@ -1,7 +1,16 @@
 import axios from "axios";
 import { getLocalStorageItem } from "./persistence-service";
+import {
+  ICardItem,
+  IOrders,
+  IOrdersHistoryItem,
+  IPost_Query_Form,
+} from "../common/interfaces";
 
-export const postOrderToHistory = async ({ form, cartContext }) => {
+export const postOrderToHistory = async ({
+  form,
+  cartContext,
+}: IPost_Query_Form): Promise<IOrdersHistoryItem> => {
   return await axios.post(`${process.env.REACT_APP_API_URL}/orders`, {
     name: form.name,
     surName: form.surName,
@@ -13,12 +22,16 @@ export const postOrderToHistory = async ({ form, cartContext }) => {
     date: new Date(),
   });
 };
-
+// : Promise<IOrders[]>
 export const getOrders = () => {
   return axios.get(`${process.env.REACT_APP_API_URL}/orders`);
 };
 
-export const multiSortHandler = (positive, negative, cards) => {
+export const multiSortHandler = (
+  positive: number,
+  negative: number,
+  cards: ICardItem[]
+) => {
   return cards.sort(function (a, b) {
     if (a.title > b.title) {
       return positive;
@@ -30,7 +43,7 @@ export const multiSortHandler = (positive, negative, cards) => {
   });
 };
 
-export const getCards = async (inputCategory) => {
+export const getCards = async (inputCategory: string): Promise<ICardItem[]> => {
   const category = inputCategory || getLocalStorageItem("category") || null;
   const sorting = getLocalStorageItem("sorting");
   return await axios
@@ -41,7 +54,7 @@ export const getCards = async (inputCategory) => {
         results = res.data;
       } else {
         const result = res.data.filter(
-          (el) => el.category === category.toLowerCase()
+          (el: ICardItem) => el.category === category.toLowerCase()
         );
         results = result;
       }

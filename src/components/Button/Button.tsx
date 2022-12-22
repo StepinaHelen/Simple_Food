@@ -1,6 +1,7 @@
 import { Btn } from "./BtnStyles";
+import { IBtnProps } from "../../common/interfaces";
 
-const Button = (props) => {
+const Button = (props: IBtnProps) => {
   return (
     <Btn
       type={props.type || "button"}

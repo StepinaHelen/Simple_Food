@@ -3,8 +3,9 @@ import Button from "../Button/Button";
 import CartContext from "../../store/cart-context";
 import { toast } from "react-toastify";
 import { Item, WraperItem, AmountWrapper, BtnWrapper } from "./CardsStyles";
+import { ICardItem } from "../../common/interfaces";
 
-const CardItem = (props) => {
+const CardItem = (props: ICardItem) => {
   const cartContext = useContext(CartContext);
   const [value, setValue] = useState(1);
   const decrement = () => {
@@ -32,7 +33,7 @@ const CardItem = (props) => {
 
   return (
     <Item>
-      <img src={props.img} alt={props.name} />
+      <img src={props.img} alt={props.title} />
       <WraperItem>
         <h2>{props.title}</h2>
         <p>
@@ -40,12 +41,7 @@ const CardItem = (props) => {
         </p>
         <AmountWrapper>
           <p>Amount:</p>
-          <button
-            type="button"
-            onClick={decrement}
-            min="0"
-            disabled={value === 0}
-          >
+          <button type="button" onClick={decrement} disabled={value === 0}>
             -
           </button>
           <span data-testid="value">{value}</span>

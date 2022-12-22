@@ -21,4 +21,8 @@ export const Content = styled.div`
   span {
     color: red;
   }
+  a {
+    color: white;
+    display: inline-block;
+  }
 `;

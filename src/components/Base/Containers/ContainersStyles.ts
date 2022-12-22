@@ -6,7 +6,7 @@ const marginStyle = css`
   min-height: calc(100vh - 290px);
 `;
 
-export const Container = styled.div`
+export const Container = styled.div<{ $withMargins: boolean }>`
   padding-left: 15px;
   padding-right: 15px;
   margin-left: auto;
@@ -49,7 +49,7 @@ const shadowStyle = css`
   }
 `;
 
-export const EmptyWrapper = styled.div`
+export const EmptyWrapper = styled.div<{ $withShadow: boolean }>`
   width: 100%;
   display: flex;
   flex-direction: column;

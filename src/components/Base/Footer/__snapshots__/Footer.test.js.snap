@@ -67,7 +67,12 @@ Object {
               <span>
                 ❤
               </span>
-                by Stepina Helen
+                by
+              <a
+                href="https://www.linkedin.com/in/helen-stepina-a5b8b8211/"
+              >
+                Stepina Helen
+              </a>
             </p>
           </div>
         </div>
@@ -137,7 +142,12 @@ Object {
             <span>
               ❤
             </span>
-              by Stepina Helen
+              by
+            <a
+              href="https://www.linkedin.com/in/helen-stepina-a5b8b8211/"
+            >
+              Stepina Helen
+            </a>
           </p>
         </div>
       </div>
