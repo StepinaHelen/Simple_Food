@@ -13,8 +13,13 @@ import CartContextProvider from "./store/CartContextProvider";
 import CartList from "./components/Cart/CartList";
 import OrderPage from "./components/Pages/OrderPage";
 import OrdersHistoryItem from "./components/Orders/OrdersHistoryItem";
+import { baseTheme } from "./styles/theme";
+
+import GlobalStyles from "./styles/global";
 
 import { ROUTES } from "./common/constants";
+import { ThemeProvider } from "styled-components";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -25,24 +30,27 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient} contextSharing={true}>
-      <CartContextProvider>
-        <ToastContainer />
-        <BrowserRouter>
-          <Header />
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path={ROUTES.cartPage} element={<CartList />} />
-            <Route path={ROUTES.orderPage} element={<OrderPage />} />
-            <Route
-              path={ROUTES.orderHistoryPage}
-              element={<OrdersHistoryItem />}
-            />
-          </Routes>
-          <Footer />
-        </BrowserRouter>
-      </CartContextProvider>
-    </QueryClientProvider>
+    <ThemeProvider theme={baseTheme}>
+      <QueryClientProvider client={queryClient} contextSharing={true}>
+        <GlobalStyles />
+        <CartContextProvider>
+          <ToastContainer />
+          <BrowserRouter>
+            <Header />
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path={ROUTES.cartPage} element={<CartList />} />
+              <Route path={ROUTES.orderPage} element={<OrderPage />} />
+              <Route
+                path={ROUTES.orderHistoryPage}
+                element={<OrdersHistoryItem />}
+              />
+            </Routes>
+            <Footer />
+          </BrowserRouter>
+        </CartContextProvider>
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 }
 

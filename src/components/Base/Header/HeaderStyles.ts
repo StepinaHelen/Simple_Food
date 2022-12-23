@@ -5,20 +5,21 @@ export const HeaderContainer = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #6b068a;
+  background-color: ${({ theme }) => theme.colors.primary};
   color: white;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
   z-index: 10;
 `;
 
 export const HeaderWrapper = styled.div`
+  ${({ theme }) =>
+    theme.flex({
+      alignItems: "center",
+      justifyContent: "space-between",
+    })}
   margin: 0 auto;
-  display: flex;
   padding: 12px 0;
-  justify-content: space-between;
-  align-items: center;
   color: white;
-
   .icon {
     height: 62px;
     width: 48px;
@@ -31,14 +32,14 @@ export const Title = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: "Mansalva", cursive;
-  font-weight: 400;
-  font-size: 52px;
-  line-height: 57px;
+  ${({ theme }) =>
+      theme.fontText({ fontSize:"52px",
+        lineHeight: "57px"})}
 
   @media screen and (max-width: 768px) {
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 35px;
+    ${({ theme }) =>
+      theme.fontText({ fontSize:"32px",
+        lineHeight: "35px"})}
   }
 `;
 
@@ -51,7 +52,7 @@ export const IconsContainer = styled.div`
     height: 56px;
     margin-right: 8px;
     margin-left: 8px;
-    border: 2px solid #ffffff;
+    border: 2px solid ${({ theme }) => theme.colors.secondaryFont};
     background-color: white;
     border-radius: 3px;
     @media screen and (max-width: 768px) {
@@ -77,6 +78,7 @@ export const Amount = styled.div`
     font-weight: 600;
     margin-left: 8px;
     font-size: 18px;
+    margin-top: 3px;
   }
 `;
 

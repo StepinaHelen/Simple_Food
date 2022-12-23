@@ -10,13 +10,13 @@ export const Background = styled.div`
   display: block;
   padding: 30px 32px;
   max-width: 480px;
-  @media screen and (min-width: 768px) {
+  @media screen and ${({ theme }) => theme.media.medium} {
     max-width: 1200px;
     padding: 75px 0;
     height: 312px;
     max-width: 768px;
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and ${({ theme }) => theme.media.large} {
     max-width: 1600px;
     padding: 215px 0;
     height: 600px;
@@ -33,44 +33,46 @@ export const Content = styled.div`
   h2 {
     margin: 0 0 22px 0;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
+    ${({ theme }) => theme.fontText({ fontWeight: 500 })}
   }
   p {
     margin: 0;
-    font-size: 12px;
-    line-height: 14px;
+    ${({ theme }) =>
+      theme.fontText({ fontWeight: 500, fontSize: "12px", lineHeight: "14px" })}
   }
 
-  @media screen and (min-width: 480px) {
+  @media screen and ${({ theme }) => theme.media.small} {
     width: 416px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and ${({ theme }) => theme.media.medium} {
     width: 416px;
     h2 {
-      font-size: 16px;
-      line-height: 19px;
-      font-weight: 500;
+      ${({ theme }) => theme.fontText({ fontWeight: 500 })}
     }
     p {
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 14px;
+      ${({ theme }) =>
+        theme.fontText({
+          fontWeight: 500,
+          fontSize: "12px",
+          lineHeight: "14px",
+        })}
     }
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and ${({ theme }) => theme.media.large} {
     width: 660px;
     h2 {
-      font-size: 36px;
-      line-height: 42px;
       margin: 0 0 22px 0;
+      ${({ theme }) => theme.fontText({ fontSize: "36px", lineHeight: "42px" })}
     }
     p {
-      font-size: 20px;
-      line-height: 23px;
-      font-weight: 500;
+      ${({ theme }) =>
+        theme.fontText({
+          fontWeight: 500,
+          fontSize: "20px",
+          lineHeight: "23px",
+        })}
       margin: 0;
     }
   }

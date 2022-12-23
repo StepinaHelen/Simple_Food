@@ -14,15 +14,15 @@ export const Container = styled.div<{ $withMargins: boolean }>`
 
   ${({ $withMargins }) => $withMargins && marginStyle}
 
-  @media screen and (min-width: 480px) {
+  @media screen and ${({ theme }) => theme.media.small} {
     width: 480px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and ${({ theme }) => theme.media.medium} {
     width: 768px;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and ${({ theme }) => theme.media.large} {
     width: 1200px;
   }
 `;
@@ -36,39 +36,42 @@ export const Wrapper = styled.div`
 const shadowStyle = css`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
+  ${({ theme }) =>
+    theme.flex({
+      flexDirection: "column",
+      alignItems: "flex-end",
+      justifyContent: "space-between",
+    })}
   width: 446px;
   margin: 0 auto;
 
-  @media screen and (min-width: 768px) {
+  @media screen and ${({ theme }) => theme.media.medium} {
     padding: 30px;
     width: 446px;
   }
 `;
 
 export const EmptyWrapper = styled.div<{ $withShadow: boolean }>`
+  ${({ theme }) =>
+    theme.flex({
+      alignItems: "flex-end",
+      justifyContent: "space-between",
+      flexDirection: "column",
+    })}
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
 
   h3,
   .amount {
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 28px;
-    color: #6b068a;
+    ${({ theme }) =>
+      theme.fontText({ fontWeight: 500, fontSize: "24px", lineHeight: "28px" })}
+    color: ${({ theme }) => theme.colors.primary};
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and ${({ theme }) => theme.media.large} {
     padding: 0px 0px 0px 70px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and ${({ theme }) => theme.media.medium} {
     width: 50%;
     padding: 0px 0px 0px 20px;
   }

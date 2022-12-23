@@ -12,14 +12,14 @@ export const Item = styled.li`
   @media screen and (min-width: 320px) {
     width: 100%;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and ${({ theme }) => theme.media.medium} {
     width: calc((100% - 4 * 15px) / 2);
 
     img {
       height: 226px;
     }
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and ${({ theme }) => theme.media.large} {
     width: calc((100% - 8 * 15px) / 4);
 
     img {
@@ -37,21 +37,18 @@ export const WraperItem = styled.div`
   padding: 20px 20px;
 
   h2 {
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 28px;
+    ${({ theme }) =>
+      theme.fontText({ fontWeight: 600, fontSize: "22px", lineHeight: "28px" })}
     margin-bottom: 20px;
     text-overflow: ellipsis;
-    /* width: 220px; */
     white-space: nowrap;
     overflow: hidden;
   }
 
   p {
     margin-bottom: 20px;
-    font-size: 20px;
-    line-height: 23px;
-    font-weight: 600;
+    ${({ theme }) =>
+      theme.fontText({ fontWeight: 600, fontSize: "20px", lineHeight: "23px" })}
 
     span {
       font-weight: 400;
@@ -59,18 +56,26 @@ export const WraperItem = styled.div`
   }
 `;
 export const AmountWrapper = styled.div`
-  display: flex;
-  align-items: center;
+  ${({ theme }) =>
+    theme.flex({
+      alignItems: "center",
+      justifyContent: "flex-start",
+    })}
+
   margin-bottom: 20px;
 
   button {
-    background-color: #6b068a;
+    background-color: ${({ theme }) => theme.colors.primary};
     height: 20px;
     width: 20px;
     outline: none;
     border: none;
     border-radius: 5px;
     color: white;
+    cursor: pointer;
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.secondary};
+    }
   }
 
   p {
@@ -88,8 +93,7 @@ export const BtnWrapper = styled.div`
 `;
 
 export const SortWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
+  ${({ theme }) => theme.flex({ justifyContent: "space-between" })}
   padding: 60px 0;
 
   .arrow {
