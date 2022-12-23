@@ -26,6 +26,6 @@ export const baseTheme = {
   fontText: ({ fontWeight, fontSize, lineHeight }: any) => css`
     font-weight: ${fontWeight ? fontWeight : "400"};
     font-size: ${fontSize ? fontSize : "16px"};
-    line-height: ${fontSize ? fontSize : "19px"};
+    line-height: ${lineHeight ? lineHeight : "19px"};
   `,
 };
