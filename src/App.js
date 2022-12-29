@@ -42,8 +42,7 @@ function App() {
   };
 
   useEffect(() => {
-    const localTheme = window.localStorage.getItem("theme");
-    localTheme && changeTheme(localTheme);
+    localTheme && changeTheme();
   }, []);
 
   return (
