@@ -6,7 +6,7 @@ export const HeaderContainer = styled.header`
   left: 0;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.primary};
-  color: white;
+  color: ${({ theme }) => theme.colors.btnColor};
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
   z-index: 10;
 `;
@@ -19,7 +19,7 @@ export const HeaderWrapper = styled.div`
     })}
   margin: 0 auto;
   padding: 12px 0;
-  color: white;
+  color: ${({ theme }) => theme.colors.btnColor};
   .icon {
     height: 62px;
     width: 48px;
@@ -49,7 +49,7 @@ export const IconsContainer = styled.div`
     margin-right: 8px;
     margin-left: 8px;
     border: 2px solid ${({ theme }) => theme.colors.secondaryFont};
-    background-color: white;
+    background-color: ${({ theme }) => theme.colors.btnColor};
     border-radius: 3px;
     @media screen and (max-width: 768px) {
       margin-right: 2px;
@@ -70,7 +70,7 @@ export const Amount = styled.div`
 
   span {
     display: block;
-    color: white;
+    color: ${({ theme }) => theme.colors.btnColor};
     font-weight: 600;
     margin-left: 8px;
     font-size: 18px;

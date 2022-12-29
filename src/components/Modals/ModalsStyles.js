@@ -13,7 +13,7 @@ export const BackdropWrapper = styled.div`
 
 export const ModalWrapper = styled.div`
   position: fixed;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.btnColor};
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);

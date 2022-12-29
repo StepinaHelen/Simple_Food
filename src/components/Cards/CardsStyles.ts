@@ -78,7 +78,7 @@ export const AmountWrapper = styled.div`
     outline: none;
     border: none;
     border-radius: 5px;
-    color: white;
+    color:  ${({ theme }) => theme.colors.btnColor};
     cursor: pointer;
     &:hover {
       background-color: ${({ theme }) => theme.colors.secondary};

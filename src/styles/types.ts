@@ -31,7 +31,13 @@ interface IMedia {
 
 export interface IFlexMixin {
   flexDirection?: "row" | "row-reverse" | "column" | "column-reverse";
-  alignItems?: "center" | "start" | "end" | "flex-start" | "flex-end";
+  alignItems?:
+    | "center"
+    | "start"
+    | "end"
+    | "flex-start"
+    | "flex-end"
+    | "stretch";
   justifyContent?:
     | "space-between"
     | "center"

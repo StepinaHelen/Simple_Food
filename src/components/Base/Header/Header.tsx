@@ -21,7 +21,7 @@ const Header = (props: any) => {
   }, 0);
   return (
     <React.Fragment>
-      {props.theme === "dark" ? (
+      {props.mode === "dark" ? (
         <ThemeBtn onClick={props.changeTheme}>
           <Icons name="moon" classes={"theme-moon"} />
         </ThemeBtn>

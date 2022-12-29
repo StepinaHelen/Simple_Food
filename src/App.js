@@ -35,10 +35,10 @@ const queryClient = new QueryClient({
 
 function App() {
   const localTheme = getLocalStorageItem("theme");
-  const [theme, setTheme] = useState(localTheme ? localTheme : "light");
+  const [mode, setMode] = useState(localTheme ? localTheme : "light");
   const changeTheme = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-    setLocalStorageItem("theme", theme);
+    mode === "light" ? setMode("dark") : setMode("light");
+    setLocalStorageItem("theme", mode);
   };
 
   useEffect(() => {
@@ -46,13 +46,13 @@ function App() {
   }, []);
 
   return (
-    <ThemeProvider theme={theme === "dark" ? darkTheme : baseTheme}>
+    <ThemeProvider theme={mode === "dark" ? darkTheme : baseTheme}>
       <QueryClientProvider client={queryClient} contextSharing={true}>
         <GlobalStyles />
         <CartContextProvider>
           <ToastContainer />
           <BrowserRouter>
-            <Header changeTheme={changeTheme} theme={theme} />
+            <Header changeTheme={changeTheme} mode={mode} />
             <Routes>
               <Route path="/" element={<MainPage />} />
               <Route path={ROUTES.cartPage} element={<CartList />} />
