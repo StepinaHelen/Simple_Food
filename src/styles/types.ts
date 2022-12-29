@@ -12,6 +12,7 @@ interface IColors {
   error: string;
   mainFont: string;
   secondaryFont: string;
+  borderColor: string;
 }
 interface IOrder {
   header: number;
@@ -22,4 +23,5 @@ interface IMedia {
   large: string;
   medium: string;
   small: string;
+  small_max: string;
 }

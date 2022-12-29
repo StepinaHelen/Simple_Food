@@ -8,12 +8,14 @@ export const baseTheme = {
 
     mainFont: "#252525",
     secondaryFont: "#FFFFFF",
+    borderColor: "#747474",
   },
 
   media: {
     large: "(min-width: 1200px)",
     medium: "(min-width: 768px)",
     small: "(min-width: 480px)",
+    small_max: "(max-width: 480px)",
   },
 
   flex: ({ alignItems, justifyContent, flexDirection }: any) => css`

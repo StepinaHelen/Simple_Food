@@ -80,7 +80,7 @@ export const WrapperContainer = styled.div`
 export const ListItems = styled.li`
   ${({ theme }) => theme.flex({ alignItems: "center" })}
   border-bottom: dotted;
-  border-color: #747474;
+  border-color: ${({ theme }) => theme.colors.borderColor};
   width: 100%;
 
   p:first-child {
@@ -98,7 +98,7 @@ export const ListItems = styled.li`
       theme.flex({
         alignItems: "center",
       })}
-    color: #000000;
+    color: ${({ theme }) => theme.colors.mainFont};
   }
 `;
 
@@ -139,12 +139,12 @@ export const FormWrapper = styled.div`
     height: 52px;
     font-size: 24px;
     line-height: 28px;
-      @media screen and (max-width:480px) {
+      @media screen and ${({ theme }) => theme.media.small_max} {
         max-width:420px
       }
   }
   max-width:420px
-  @media screen and (min-width:480px) {
+  @media screen and ${({ theme }) => theme.media.small} {
     width:605px
   }
   @media screen and (min-width:780px) {
