@@ -6,7 +6,7 @@ export default createGlobalStyle`
 
 html {
   font-family: sans-serif;
-  background: #fff;
+  background: ${({ theme }) => theme.colors.secondaryFont};
 }
 
 body {

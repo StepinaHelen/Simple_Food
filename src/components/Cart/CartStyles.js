@@ -6,16 +6,16 @@ export const List = styled.ul`
 `;
 
 export const TotalWrapper = styled.div`
-  ${({ theme }) => theme.flex}
-  ${({ theme }) => theme.fontText({ fontSize: "48px", lineHeight: "56px" })}
+  ${({ theme }) => theme.flex({})}
+  ${({ theme }) => theme.fontText({ fontSize: 48, lineHeight: 56 })}
 `;
 
 export const Item = styled.li`
-  ${({ theme }) => theme.flex({ flexDirection: "column" })}
+  ${({ theme }) => theme.flex({ flexDirection: "column" })};
+  background-color: ${({ theme }) => theme.colors.secondaryFont};
+  color: ${({ theme }) => theme.colors.mainFont};
   margin-bottom: 20px;
-  background-color: #fff;
-  box-shadow: 0px 2px 1px rgb(0 0 0 / 20%), 0px 1px 1px rgb(0 0 0 / 14%),
-    0px 1px 3px rgb(0 0 0 / 12%);
+  box-shadow: ${({ theme }) => theme.colors.boxShadow};
   border-radius: 0px 0px 4px 4px;
   width: 100%;
 
@@ -41,13 +41,13 @@ export const WraperItem = styled.div`
 
   h2 {
     ${({ theme }) =>
-      theme.fontText({ fontWeight: 500, fontSize: "40px", lineHeight: "47px" })}
+      theme.fontText({ fontWeight: 500, fontSize: 40, lineHeight: 47 })}
     margin: 0 0 10px 0;
   }
 
   p {
     ${({ theme }) =>
-      theme.fontText({ fontWeight: 500, fontSize: "28px", lineHeight: "33px" })}
+      theme.fontText({ fontWeight: 500, fontSize: 28, lineHeight: 33 })}
     margin: 0 0 10px 0;
   }
   @media screen and ${({ theme }) => theme.media.medium} {
@@ -58,12 +58,12 @@ export const WraperItem = styled.div`
     padding: 20px;
 
     h2 {
-      ${({ theme }) => theme.fontText({ fontSize: "28px", lineHeight: "33px" })}
+      ${({ theme }) => theme.fontText({ fontSize: 28, lineHeight: 33 })}
       margin: 0 0 20px 0;
     }
 
     p {
-      ${({ theme }) => theme.fontText({ fontSize: "20px", lineHeight: "23px" })}
+      ${({ theme }) => theme.fontText({ fontSize: 20, lineHeight: 23 })}
       margin: 0 0 20px 0;
     }
   }
@@ -72,8 +72,8 @@ export const WraperItem = styled.div`
       ${({ theme }) =>
         theme.fontText({
           fontWeight: 500,
-          fontSize: "40px",
-          lineHeight: "47px",
+          fontSize: 40,
+          lineHeight: 47,
         })}
     }
 
@@ -81,8 +81,8 @@ export const WraperItem = styled.div`
       ${({ theme }) =>
         theme.fontText({
           fontWeight: 500,
-          fontSize: "28px",
-          lineHeight: "33px",
+          fontSize: 28,
+          lineHeight: 33,
         })}
     }
   }

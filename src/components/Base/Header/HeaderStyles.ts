@@ -32,14 +32,10 @@ export const Title = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: "Mansalva", cursive;
-  ${({ theme }) =>
-      theme.fontText({ fontSize:"52px",
-        lineHeight: "57px"})}
+  ${({ theme }) => theme.fontText({ fontSize: 52, lineHeight: 57 })}
 
   @media screen and (max-width: 768px) {
-    ${({ theme }) =>
-      theme.fontText({ fontSize:"32px",
-        lineHeight: "35px"})}
+    ${({ theme }) => theme.fontText({ fontSize: 32, lineHeight: 35 })}
   }
 `;
 
@@ -84,4 +80,21 @@ export const Amount = styled.div`
 
 export const IconContainer = styled.div`
   position: relative;
+`;
+
+export const ThemeBtn = styled.button`
+  position: fixed;
+  z-index: 1000;
+  top: 25px;
+  right: 25px;
+  background-color: transparent;
+  border: none;
+  .theme {
+    height: 48px;
+    width: 48px;
+    &-moon {
+      height: 40px;
+      width: 40px;
+    }
+  }
 `;

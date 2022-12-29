@@ -34,7 +34,7 @@ export const Wrapper = styled.div`
 `;
 
 const shadowStyle = css`
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: ${({ theme }) => theme.colors.boxShadow};
   padding: 30px;
   ${({ theme }) =>
     theme.flex({
@@ -63,7 +63,7 @@ export const EmptyWrapper = styled.div<{ $withShadow: boolean }>`
   h3,
   .amount {
     ${({ theme }) =>
-      theme.fontText({ fontWeight: 500, fontSize: "24px", lineHeight: "28px" })}
+      theme.fontText({ fontWeight: 500, fontSize: 24, lineHeight: 28 })}
     color: ${({ theme }) => theme.colors.primary};
   }
 

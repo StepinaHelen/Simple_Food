@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Item = styled.li`
   margin: 15px;
   background-color: #fff;
-  box-shadow: 0px 2px 1px rgb(0 0 0 / 20%), 0px 1px 1px rgb(0 0 0 / 14%),
-    0px 1px 3px rgb(0 0 0 / 12%);
+  box-shadow: ${({ theme }) => theme.colors.boxShadow};
+
   border-radius: 0px 0px 4px 4px;
   margin-left: auto;
   margin-right: auto;
@@ -31,14 +31,20 @@ export const Item = styled.li`
     width: 100%;
     object-fit: contain;
   }
+  transition: 0.5s;
+  :hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const WraperItem = styled.div`
   padding: 20px 20px;
+  background-color: ${({ theme }) => theme.colors.secondaryFont};
+  color: ${({ theme }) => theme.colors.mainFont};
 
   h2 {
     ${({ theme }) =>
-      theme.fontText({ fontWeight: 600, fontSize: "22px", lineHeight: "28px" })}
+      theme.fontText({ fontWeight: 600, fontSize: 22, lineHeight: 28 })}
     margin-bottom: 20px;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -48,13 +54,14 @@ export const WraperItem = styled.div`
   p {
     margin-bottom: 20px;
     ${({ theme }) =>
-      theme.fontText({ fontWeight: 600, fontSize: "20px", lineHeight: "23px" })}
+      theme.fontText({ fontWeight: 600, fontSize: 20, lineHeight: 23 })}
 
     span {
       font-weight: 400;
     }
   }
 `;
+
 export const AmountWrapper = styled.div`
   ${({ theme }) =>
     theme.flex({

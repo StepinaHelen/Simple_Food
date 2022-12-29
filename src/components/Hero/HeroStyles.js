@@ -38,7 +38,7 @@ export const Content = styled.div`
   p {
     margin: 0;
     ${({ theme }) =>
-      theme.fontText({ fontWeight: 500, fontSize: "12px", lineHeight: "14px" })}
+      theme.fontText({ fontWeight: 500, fontSize: 12, lineHeight: 14 })}
   }
 
   @media screen and ${({ theme }) => theme.media.small} {
@@ -54,8 +54,8 @@ export const Content = styled.div`
       ${({ theme }) =>
         theme.fontText({
           fontWeight: 500,
-          fontSize: "12px",
-          lineHeight: "14px",
+          fontSize: 12,
+          lineHeight: 14,
         })}
     }
   }
@@ -64,14 +64,14 @@ export const Content = styled.div`
     width: 660px;
     h2 {
       margin: 0 0 22px 0;
-      ${({ theme }) => theme.fontText({ fontSize: "36px", lineHeight: "42px" })}
+      ${({ theme }) => theme.fontText({ fontSize: 36, lineHeight: 42 })}
     }
     p {
       ${({ theme }) =>
         theme.fontText({
           fontWeight: 500,
-          fontSize: "20px",
-          lineHeight: "23px",
+          fontSize: 20,
+          lineHeight: 23,
         })}
       margin: 0;
     }

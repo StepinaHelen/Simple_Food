@@ -2,15 +2,16 @@ import styled from "styled-components";
 
 export const List = styled.ul`
   width: 100%;
+  color: ${({ theme }) => theme.colors.mainFont};
   li {
     ${({ theme }) => theme.flex({ alignItems: "center" })}
   }
   h3 {
     ${({ theme }) =>
-      theme.fontText({ fontWeight: 500, fontSize: "20px", lineHeight: "23px" })}
+      theme.fontText({ fontWeight: 500, fontSize: 20, lineHeight: 23})}
   }
   p {
-    ${({ theme }) => theme.fontText}
+    ${({ theme }) => theme.fontText({})}
     color: #747474;
   }
 `;
@@ -22,17 +23,17 @@ export const DetailsContainer = styled.div`
   padding-right: 20px;
   .date {
     width: 100%;
-    ${({ theme }) => theme.flex}
+    ${({ theme }) => theme.flex({})}
     h3 {
-      ${({ theme }) => theme.fontText({ fontSize: "24px", lineHeight: "28px" })}
+      ${({ theme }) => theme.fontText({ fontSize: 24, lineHeight: 28 })}
       color: ${({ theme }) => theme.colors.primary};
     }
     p {
       ${({ theme }) =>
         theme.fontText({
           fontWeight: 400,
-          fontSize: "20px",
-          lineHeight: "23px",
+          fontSize: 20,
+          lineHeight: 23,
         })}
       color: #252525;
     }
@@ -49,7 +50,8 @@ export const DetailsContainer = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: ${({ theme }) => theme.colors.boxShadow};
+  margin-bottom: 20px;
   padding: 40px;
   display: flex;
   flex-direction: column;
@@ -64,7 +66,7 @@ export const Wrapper = styled.div`
 
   h2 {
     align-items: center;
-    ${({ theme }) => theme.fontText({ fontSize: "24px", lineHeight: "28px" })}
+    ${({ theme }) => theme.fontText({ fontSize: 24, lineHeight: 28 })}
     color: ${({ theme }) => theme.colors.primary};
   }
 
@@ -93,7 +95,7 @@ export const ListItems = styled.li`
 
   p {
     ${({ theme }) =>
-      theme.fontText({ fontWeight: 500, fontSize: "20px", lineHeight: "23px" })}
+      theme.fontText({ fontWeight: 500, fontSize: 20, lineHeight: 23 })}
     ${({ theme }) =>
       theme.flex({
         alignItems: "center",
@@ -115,18 +117,19 @@ export const FormWrapper = styled.div`
   label {
     display: flex;
     flex-direction: column;
+    color: ${({ theme }) => theme.colors.mainFont};
     ${({ theme }) => theme.fontText({ fontWeight: 500 })}
     position: relative;
     p {
       position: absolute;
-      color: ${({ theme }) => theme.colors.error}
+      color: ${({ theme }) => theme.colors.error};
       bottom: -3px;
       font-size: 12px;
     }
   }
 
   h2 {
-    ${({ theme }) => theme.fontText({ fontSize: "40px", lineHeight: "247px" })}
+    ${({ theme }) => theme.fontText({ fontSize: 40, lineHeight: 47 })}
     color: ${({ theme }) => theme.colors.primary};
   }
 
@@ -139,15 +142,14 @@ export const FormWrapper = styled.div`
     height: 52px;
     font-size: 24px;
     line-height: 28px;
-      @media screen and ${({ theme }) => theme.media.small_max} {
-        max-width:420px
-      }
+    @media screen and ${({ theme }) => theme.media.small_max} {
+      max-width: 420px;
+    }
   }
-  max-width:420px
-  @media screen and ${({ theme }) => theme.media.small} {
-    width:605px
+  max-width: 420px @media screen and ${({ theme }) => theme.media.small} {
+    width: 605px;
   }
-  @media screen and (min-width:780px) {
+  @media screen and (min-width: 780px) {
     width: 675px;
   }
 `;

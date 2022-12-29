@@ -8,7 +8,7 @@ export const FooterContainer = styled.footer`
 `;
 
 export const Content = styled.div`
-  ${({ theme }) => theme.fontText}
+  ${({ theme }) => theme.fontText({})}
   margin: 0 auto;
 
   p {

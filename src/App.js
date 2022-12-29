@@ -13,12 +13,17 @@ import CartContextProvider from "./store/CartContextProvider";
 import CartList from "./components/Cart/CartList";
 import OrderPage from "./components/Pages/OrderPage";
 import OrdersHistoryItem from "./components/Orders/OrdersHistoryItem";
-import { baseTheme } from "./styles/theme";
+import { baseTheme, darkTheme } from "./styles/theme";
+import {
+  getLocalStorageItem,
+  setLocalStorageItem,
+} from "./services/persistence-service";
 
 import GlobalStyles from "./styles/global";
 
 import { ROUTES } from "./common/constants";
 import { ThemeProvider } from "styled-components";
+import { useState, useEffect } from "react";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,14 +34,26 @@ const queryClient = new QueryClient({
 });
 
 function App() {
+  const localTheme = getLocalStorageItem("theme");
+  const [theme, setTheme] = useState(localTheme ? localTheme : "light");
+  const changeTheme = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+    setLocalStorageItem("theme", theme);
+  };
+
+  useEffect(() => {
+    const localTheme = window.localStorage.getItem("theme");
+    localTheme && changeTheme(localTheme);
+  }, []);
+
   return (
-    <ThemeProvider theme={baseTheme}>
+    <ThemeProvider theme={theme === "dark" ? darkTheme : baseTheme}>
       <QueryClientProvider client={queryClient} contextSharing={true}>
         <GlobalStyles />
         <CartContextProvider>
           <ToastContainer />
           <BrowserRouter>
-            <Header />
+            <Header changeTheme={changeTheme} theme={theme} />
             <Routes>
               <Route path="/" element={<MainPage />} />
               <Route path={ROUTES.cartPage} element={<CartList />} />

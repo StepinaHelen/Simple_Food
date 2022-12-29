@@ -11,15 +11,25 @@ import {
   IconsContainer,
   Amount,
   IconContainer,
+  ThemeBtn,
 } from "./HeaderStyles";
 
-const Header = () => {
+const Header = (props: any) => {
   const cartContext = useContext(CartContext);
   const cartItemsAmount = cartContext.items.reduce((currentValue, item) => {
     return currentValue + item.amount;
   }, 0);
   return (
     <React.Fragment>
+      {props.theme === "dark" ? (
+        <ThemeBtn onClick={props.changeTheme}>
+          <Icons name="moon" classes={"theme-moon"} />
+        </ThemeBtn>
+      ) : (
+        <ThemeBtn onClick={props.changeTheme}>
+          <Icons name="sun" classes={"theme"} />
+        </ThemeBtn>
+      )}
       <HeaderContainer>
         <CommonContainer withMargin={false}>
           <HeaderWrapper>
