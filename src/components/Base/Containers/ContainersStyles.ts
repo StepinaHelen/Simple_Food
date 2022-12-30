@@ -12,19 +12,19 @@ export const Container = styled.div<{ $withMargins: boolean }>`
   margin-left: auto;
   margin-right: auto;
 
-  ${({ $withMargins }) => $withMargins && marginStyle}
+  ${({ $withMargins }) => $withMargins && marginStyle};
 
-  @media screen and ${({ theme }) => theme.media.small} {
+  @media screen and ${({ theme }) => theme.media?.small} {
     width: 480px;
   }
 
-  @media screen and ${({ theme }) => theme.media.medium} {
+  @media screen and ${({ theme }) => theme.media?.medium} {
     width: 768px;
   }
 
-  @media screen and ${({ theme }) => theme.media.large} {
+  @media screen and ${({ theme }) => theme.media?.large} {
     width: 1200px;
-  }
+  } ;
 `;
 
 export const Wrapper = styled.div`
@@ -41,14 +41,14 @@ const shadowStyle = css`
       flexDirection: "column",
       alignItems: "flex-end",
       justifyContent: "space-between",
-    })}
+    })};
   width: 446px;
   margin: 0 auto;
 
   @media screen and ${({ theme }) => theme.media.medium} {
     padding: 30px;
     width: 446px;
-  }
+  } ;
 `;
 
 export const EmptyWrapper = styled.div<{ $withShadow: boolean }>`
@@ -57,7 +57,7 @@ export const EmptyWrapper = styled.div<{ $withShadow: boolean }>`
       alignItems: "flex-end",
       justifyContent: "space-between",
       flexDirection: "column",
-    })}
+    })};
   width: 100%;
 
   h3,
