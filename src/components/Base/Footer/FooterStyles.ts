@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
   background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.btnColor};
+  color: ${({ theme }) => theme.colors.consantColor};
   width: 100%;
   display: block;
 `;
@@ -21,7 +21,7 @@ export const Content = styled.div`
     color: ${({ theme }) => theme.colors.error};
   }
   a {
-    color: ${({ theme }) => theme.colors.btnColor};
+    color: ${({ theme }) => theme.colors.consantColor};
     display: inline-block;
     text-decoration: underline;
   }

@@ -100,5 +100,9 @@ export const BtnWrapper = styled.div`
     width: 35px;
     height: 44px;
     cursor: pointer;
+    fill: ${({ theme }) => theme.colors.primary};
+    :hover {
+      fill: ${({ theme }) => theme.colors.secondary};
+    }
   }
 `;

@@ -9,12 +9,13 @@ export interface ITheme {
 interface IColors {
   primary: string;
   secondary: string;
+  secondaryShadow: string;
   error: string;
   mainFont: string;
   secondaryFont: string;
   borderColor: string;
   boxShadow: string;
-  btnColor: string;
+  consantColor: string;
 }
 
 interface IMedia {

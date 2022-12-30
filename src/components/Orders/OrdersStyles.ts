@@ -8,7 +8,7 @@ export const List = styled.ul`
   }
   h3 {
     ${({ theme }) =>
-      theme.fontText({ fontWeight: 500, fontSize: 20, lineHeight: 23})}
+      theme.fontText({ fontWeight: 500, fontSize: 20, lineHeight: 23 })}
   }
   p {
     ${({ theme }) => theme.fontText({})}
@@ -24,18 +24,23 @@ export const DetailsContainer = styled.div`
   .date {
     width: 100%;
     ${({ theme }) => theme.flex({})}
+    color: ${({ theme }) => theme.colors.primary};
+    ${({ theme }) =>
+      theme.fontText({
+        fontWeight: 400,
+        fontSize: 24,
+        lineHeight: 28,
+      })}
     h3 {
       ${({ theme }) => theme.fontText({ fontSize: 24, lineHeight: 28 })}
-      color: ${({ theme }) => theme.colors.primary};
     }
     p {
       ${({ theme }) =>
         theme.fontText({
           fontWeight: 400,
-          fontSize: 20,
-          lineHeight: 23,
+          fontSize: 24,
+          lineHeight: 28,
         })}
-      color: #252525;
     }
   }
   .title-container {

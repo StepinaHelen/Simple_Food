@@ -6,7 +6,7 @@ export const HeaderContainer = styled.header`
   left: 0;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.btnColor};
+  color: ${({ theme }) => theme.colors.consantColor};
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
   z-index: 10;
 `;
@@ -19,10 +19,14 @@ export const HeaderWrapper = styled.div`
     })}
   margin: 0 auto;
   padding: 12px 0;
-  color: ${({ theme }) => theme.colors.btnColor};
+  color: ${({ theme }) => theme.colors.consantColor};
   .icon {
     height: 62px;
     width: 48px;
+    fill: ${({ theme }) => theme.colors.consantColor};
+    :hover {
+      fill: ${({ theme }) => theme.colors.secondary};
+    }
   }
 `;
 
@@ -49,7 +53,7 @@ export const IconsContainer = styled.div`
     margin-right: 8px;
     margin-left: 8px;
     border: 2px solid ${({ theme }) => theme.colors.secondaryFont};
-    background-color: ${({ theme }) => theme.colors.btnColor};
+    background-color: ${({ theme }) => theme.colors.consantColor};
     border-radius: 3px;
     @media screen and (max-width: 768px) {
       margin-right: 2px;
@@ -66,11 +70,10 @@ export const Amount = styled.div`
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background-color: #350e42;
-
+  background-color: ${({ theme }) => theme.colors.secondaryShadow};
   span {
     display: block;
-    color: ${({ theme }) => theme.colors.btnColor};
+    color: ${({ theme }) => theme.colors.consantColor};
     font-weight: 600;
     margin-left: 8px;
     font-size: 18px;
@@ -92,9 +95,19 @@ export const ThemeBtn = styled.button`
   .theme {
     height: 48px;
     width: 48px;
+    cursor: pointer;
+    fill: ${({ theme }) => theme.colors.consantColor};
+    :hover {
+      fill: ${({ theme }) => theme.colors.secondary};
+    }
     &-moon {
       height: 40px;
       width: 40px;
+      cursor: pointer;
+      fill: ${({ theme }) => theme.colors.consantColor};
+      :hover {
+        fill: ${({ theme }) => theme.colors.secondary};
+      }
     }
   }
 `;

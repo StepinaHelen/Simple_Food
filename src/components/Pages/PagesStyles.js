@@ -22,6 +22,7 @@ export const BtnContainer = styled.div`
   .icon {
     height: 35px;
     width: 35px;
+    fill: ${({ theme }) => theme.colors.consantColor};
   }
 
   @media screen and ${({ theme }) => theme.media.large} {

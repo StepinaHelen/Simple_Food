@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Item = styled.li`
   margin: 15px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.secondaryFont};
   box-shadow: ${({ theme }) => theme.colors.boxShadow};
 
   border-radius: 0px 0px 4px 4px;
@@ -78,7 +78,7 @@ export const AmountWrapper = styled.div`
     outline: none;
     border: none;
     border-radius: 5px;
-    color:  ${({ theme }) => theme.colors.btnColor};
+    color: ${({ theme }) => theme.colors.consantColor};
     cursor: pointer;
     &:hover {
       background-color: ${({ theme }) => theme.colors.secondary};
@@ -106,6 +106,10 @@ export const SortWrapper = styled.div`
   .arrow {
     width: 40px;
     height: 40px;
+    fill: ${({ theme }) => theme.colors.consantColor};
+    :hover {
+      fill: ${({ theme }) => theme.colors.secondary};
+    }
   }
 `;
 

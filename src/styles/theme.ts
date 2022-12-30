@@ -4,7 +4,8 @@ export const baseTheme = {
   colors: {
     primary: "#6B068A",
     secondary: "#c913d6",
-    btnColor: "#FFFFFF",
+    secondaryShadow: "#350e42",
+    consantColor: "#FFFFFF",
     error: "red",
     mainFont: "#252525",
     secondaryFont: "#FFFFFF",
@@ -38,8 +39,9 @@ export const darkTheme = {
   colors: {
     primary: "#6B068A",
     secondary: "#c913d6",
+    secondaryShadow: "#350e42",
     error: "red",
-    btnColor: "#FFFFFF",
+    consantColor: "#FFFFFF",
     mainFont: "#FFFFFF",
     secondaryFont: "black",
     borderColor: "#747474",

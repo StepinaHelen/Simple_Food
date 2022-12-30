@@ -1,8 +1,14 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import Button from "../Button/Button";
-import { BackdropWrapper, ModalWrapper } from "./ModalsStyles";
+import {
+  BackdropWrapper,
+  ModalWrapper,
+  BtnContainer,
+  IconWrapper,
+} from "./ModalsStyles";
 import { IModalProps } from "../../common/interfaces";
+import Icons from "../SvgComponent/SvgComponent";
 
 const modalRoot = document.createElement("div");
 modalRoot.setAttribute("id", "modal-root");
@@ -20,9 +26,14 @@ const Modal = (props: IModalProps) => {
   return createPortal(
     <BackdropWrapper onClick={props.onCloseModal}>
       <ModalWrapper onClick={(e) => e.stopPropagation}>
+        <BtnContainer onClick={props.onCloseModal}>
+          <Icons name="close" classes={"close"} />
+        </BtnContainer>
         <h2>{props.title}</h2>
         <p>{props.message}</p>
-        <Button onClick={props.onCloseModal}>Close</Button>
+        <IconWrapper>
+          <Icons name="check" classes={"check"} />
+        </IconWrapper>
       </ModalWrapper>
     </BackdropWrapper>,
     el
