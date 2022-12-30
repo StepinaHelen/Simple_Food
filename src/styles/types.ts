@@ -3,9 +3,8 @@ import { FlattenSimpleInterpolation } from "styled-components";
 export interface ITheme {
   colors: IColors;
   media: IMedia;
-  order: IOrder;
-  flex: (props?: IFlexMixin) => FlattenSimpleInterpolation;
-  fontText: (props?: IFontText) => FlattenSimpleInterpolation;
+  flex: (props?: IFlexMixin | undefined) => FlattenSimpleInterpolation;
+  fontText: (props?: IFontText | undefined) => FlattenSimpleInterpolation;
 }
 interface IColors {
   primary: string;
@@ -16,10 +15,6 @@ interface IColors {
   borderColor: string;
   boxShadow: string;
   btnColor: string;
-}
-interface IOrder {
-  header: number;
-  modal: number;
 }
 
 interface IMedia {

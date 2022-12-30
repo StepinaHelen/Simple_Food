@@ -20,17 +20,17 @@ export const baseTheme = {
     small_max: "(max-width: 480px)",
   },
 
-  flex: ({ alignItems, justifyContent, flexDirection }: IFlexMixin) => css`
+  flex: (props: IFlexMixin | undefined) => css`
     display: flex;
-    justify-content: ${justifyContent ? justifyContent : "space-between"};
-    align-items: ${alignItems ? alignItems : "stretch"};
-    flex-direction: ${flexDirection ? flexDirection : "row"};
+    justify-content: ${props?.justifyContent ?? "space-between"};
+    align-items: ${props?.alignItems ?? "stretch"};
+    flex-direction: ${props?.flexDirection ?? "row"};
   `,
 
-  fontText: ({ fontWeight, fontSize, lineHeight }: IFontText) => css`
-    font-weight: ${fontWeight ? fontWeight : 400};
-    font-size: ${fontSize ? `${fontSize}px` : "16px"};
-    line-height: ${lineHeight ? `${lineHeight}px` : "19px"};
+  fontText: (props: IFontText | undefined) => css`
+    font-weight: ${props?.fontWeight ?? 400};
+    font-size: ${props?.fontSize ? `${props?.fontSize}px` : "16px"};
+    line-height: ${props?.lineHeight ? `${props?.lineHeight}px` : "19px"};
   `,
 };
 
@@ -54,16 +54,16 @@ export const darkTheme = {
     small_max: "(max-width: 480px)",
   },
 
-  flex: ({ alignItems, justifyContent, flexDirection }: IFlexMixin) => css`
+  flex: (props: IFlexMixin | undefined) => css`
     display: flex;
-    justify-content: ${justifyContent ? justifyContent : "space-between"};
-    align-items: ${alignItems ? alignItems : "stretch"};
-    flex-direction: ${flexDirection ? flexDirection : "row"};
+    justify-content: ${props?.justifyContent ?? "space-between"};
+    align-items: ${props?.alignItems ?? "stretch"};
+    flex-direction: ${props?.flexDirection ?? "row"};
   `,
 
-  fontText: ({ fontWeight, fontSize, lineHeight }: IFontText) => css`
-    font-weight: ${fontWeight ? fontWeight : 400};
-    font-size: ${fontSize ? `${fontSize}px` : "16px"};
-    line-height: ${lineHeight ? `${lineHeight}px` : "19px"};
+  fontText: (props: IFontText | undefined) => css`
+    font-weight: ${props?.fontWeight ?? 400};
+    font-size: ${props?.fontSize ? `${props?.fontSize}px` : "16px"};
+    line-height: ${props?.lineHeight ? `${props?.lineHeight}px` : "19px"};
   `,
 };
