@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
   margin: 0 auto;
   text-align: center;
   width: 400px;
+  color: ${({ theme }) => theme.colors.mainFont};
   p {
     font-weight: 600;
     font-size: 23px;

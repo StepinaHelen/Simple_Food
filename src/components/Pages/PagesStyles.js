@@ -1,26 +1,31 @@
 import styled from "styled-components";
 
 export const OrderContainer = styled.div`
-  display: flex;
+  ${({ theme }) =>
+    theme.flex({
+      justifyContent: "center",
+      flexDirection: "column",
+    })}
   margin-bottom: 60px;
-  flex-direction: column;
-  justify-content: center;
 
-  @media screen and (min-width: 1200px) {
+  @media screen and ${({ theme }) => theme.media.large} {
     flex-direction: row;
   }
 `;
 
 export const BtnContainer = styled.div`
-  display: flex;
-  justify-content: center;
+  ${({ theme }) =>
+    theme.flex({
+      justifyContent: "center",
+    })}
 
   .icon {
     height: 35px;
     width: 35px;
+    fill: ${({ theme }) => theme.colors.consantColor};
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and ${({ theme }) => theme.media.large} {
     justify-content: end;
   }
 `;

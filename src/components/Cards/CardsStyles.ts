@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const Item = styled.li`
   margin: 15px;
-  background-color: #fff;
-  box-shadow: 0px 2px 1px rgb(0 0 0 / 20%), 0px 1px 1px rgb(0 0 0 / 14%),
-    0px 1px 3px rgb(0 0 0 / 12%);
+  background-color: ${({ theme }) => theme.colors.secondaryFont};
+  box-shadow: ${({ theme }) => theme.colors.boxShadow};
+
   border-radius: 0px 0px 4px 4px;
   margin-left: auto;
   margin-right: auto;
@@ -12,14 +12,14 @@ export const Item = styled.li`
   @media screen and (min-width: 320px) {
     width: 100%;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and ${({ theme }) => theme.media.medium} {
     width: calc((100% - 4 * 15px) / 2);
 
     img {
       height: 226px;
     }
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and ${({ theme }) => theme.media.large} {
     width: calc((100% - 8 * 15px) / 4);
 
     img {
@@ -31,46 +31,58 @@ export const Item = styled.li`
     width: 100%;
     object-fit: contain;
   }
+  transition: 0.5s;
+  :hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const WraperItem = styled.div`
   padding: 20px 20px;
+  background-color: ${({ theme }) => theme.colors.secondaryFont};
+  color: ${({ theme }) => theme.colors.mainFont};
 
   h2 {
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 28px;
+    ${({ theme }) =>
+      theme.fontText({ fontWeight: 600, fontSize: 22, lineHeight: 28 })}
     margin-bottom: 20px;
     text-overflow: ellipsis;
-    /* width: 220px; */
     white-space: nowrap;
     overflow: hidden;
   }
 
   p {
     margin-bottom: 20px;
-    font-size: 20px;
-    line-height: 23px;
-    font-weight: 600;
+    ${({ theme }) =>
+      theme.fontText({ fontWeight: 600, fontSize: 20, lineHeight: 23 })}
 
     span {
       font-weight: 400;
     }
   }
 `;
+
 export const AmountWrapper = styled.div`
-  display: flex;
-  align-items: center;
+  ${({ theme }) =>
+    theme.flex({
+      alignItems: "center",
+      justifyContent: "flex-start",
+    })}
+
   margin-bottom: 20px;
 
   button {
-    background-color: #6b068a;
+    background-color: ${({ theme }) => theme.colors.primary};
     height: 20px;
     width: 20px;
     outline: none;
     border: none;
     border-radius: 5px;
-    color: white;
+    color: ${({ theme }) => theme.colors.consantColor};
+    cursor: pointer;
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.secondary};
+    }
   }
 
   p {
@@ -88,13 +100,16 @@ export const BtnWrapper = styled.div`
 `;
 
 export const SortWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
+  ${({ theme }) => theme.flex({ justifyContent: "space-between" })}
   padding: 60px 0;
 
   .arrow {
     width: 40px;
     height: 40px;
+    fill: ${({ theme }) => theme.colors.consantColor};
+    :hover {
+      fill: ${({ theme }) => theme.colors.secondary};
+    }
   }
 `;
 

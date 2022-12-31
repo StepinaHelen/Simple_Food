@@ -1,6 +1,12 @@
 import { render } from "@testing-library/react";
 import ShadowContainer from "./ShadowContainer";
 
+import { ThemeProvider } from "styled-components";
+import { baseTheme } from "../../../styles/theme";
 test("renders Shadow Container", () => {
-  render(<ShadowContainer />);
+  render(
+    <ThemeProvider theme={baseTheme}>
+      <ShadowContainer />
+    </ThemeProvider>
+  );
 });
