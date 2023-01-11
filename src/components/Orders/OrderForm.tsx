@@ -1,7 +1,7 @@
-import { FormWrapper } from "./OrdersStyles";
+import { FormWrapper } from "components/Orders/OrdersStyles";
 import { Form, Field, useFormikContext } from "formik";
-import { FORMS_FIELD } from "../../common/constants";
-import { IForm } from "../../common/interfaces";
+import { FORMS_FIELD } from "common/constants";
+import { IForm } from "common/interfaces";
 
 const OrderForm = () => {
   const { errors, touched } = useFormikContext<IForm>();

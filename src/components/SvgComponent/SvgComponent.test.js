@@ -1,5 +1,5 @@
-import SvgComponent from "./SvgComponent";
-import { render } from "../../test-utils";
+import SvgComponent from "components/SvgComponent/SvgComponent";
+import { render } from "test-utils";
 
 describe("test SvgComponent", () => {
   it("render SvgComponent", async () => {

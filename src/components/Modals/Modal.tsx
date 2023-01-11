@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
-import Button from "../Button/Button";
+import Button from "components/Button/Button";
 import {
   BackdropWrapper,
   ModalWrapper,
   BtnContainer,
   IconWrapper,
 } from "./ModalsStyles";
-import { IModalProps } from "../../common/interfaces";
-import Icons from "../SvgComponent/SvgComponent";
+import { IModalProps } from "common/interfaces";
+import Icons from "components/SvgComponent/SvgComponent";
 
 const modalRoot = document.createElement("div");
 modalRoot.setAttribute("id", "modal-root");

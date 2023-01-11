@@ -1,5 +1,5 @@
 import { css } from "styled-components";
-import { IFlexMixin, IFontText } from "./types";
+import { IFlexMixin, IFontText } from "styles/types";
 export const baseTheme = {
   colors: {
     primary: "#6B068A",

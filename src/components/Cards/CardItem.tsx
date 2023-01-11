@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
-import Button from "../Button/Button";
-import CartContext from "../../store/cart-context";
+import Button from "components/Button/Button";
+import CartContext from "store/cart-context";
 import { toast } from "react-toastify";
-import { Item, WraperItem, AmountWrapper, BtnWrapper } from "./CardsStyles";
-import { ICardItem } from "../../common/interfaces";
+import { Item, WraperItem, AmountWrapper, BtnWrapper } from "components/Cards/CardsStyles";
+import { ICardItem } from "common/interfaces";
 
 const CardItem = (props: ICardItem) => {
   const cartContext = useContext(CartContext);

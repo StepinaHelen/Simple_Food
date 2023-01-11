@@ -3,7 +3,7 @@ import {
   getOrders,
   postOrderToHistory,
   multiSortHandler,
-} from "./common-service";
+} from "services/common-service";
 
 import { rest } from "msw";
 import { setupServer } from "msw/node";

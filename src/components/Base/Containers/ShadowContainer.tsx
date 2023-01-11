@@ -1,5 +1,5 @@
-import { EmptyWrapper } from "./ContainersStyles";
-import { IShadowContainerProps } from "../../../common/interfaces";
+import { EmptyWrapper } from "components/Base/Containers/ContainersStyles";
+import { IShadowContainerProps } from "common/interfaces";
 
 const ShadowContainer = (props: IShadowContainerProps) => {
   return (

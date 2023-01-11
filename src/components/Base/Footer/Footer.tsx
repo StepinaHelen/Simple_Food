@@ -1,5 +1,5 @@
-import CommonContainer from "../Containers/CommonContainer";
-import { FooterContainer, Content } from "./FooterStyles";
+import CommonContainer from "components/Base/Containers/CommonContainer";
+import { FooterContainer, Content } from "components/Base/Footer/FooterStyles";
 
 const Footer = () => {
   return (

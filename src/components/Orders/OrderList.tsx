@@ -1,4 +1,8 @@
-import { ListItems, AmountContainer, WrapperList } from "./OrdersStyles";
+import {
+  ListItems,
+  AmountContainer,
+  WrapperList,
+} from "components/Orders/OrdersStyles";
 import { IOrdersPageProps } from "../../common/interfaces";
 
 const OrderList = (props: IOrdersPageProps) => {

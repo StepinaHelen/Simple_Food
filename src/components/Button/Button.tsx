@@ -1,5 +1,5 @@
-import { Btn } from "./BtnStyles";
-import { IBtnProps } from "../../common/interfaces";
+import { Btn } from "components/Button/BtnStyles";
+import { IBtnProps } from "common/interfaces";
 
 const Button = (props: IBtnProps) => {
   return (

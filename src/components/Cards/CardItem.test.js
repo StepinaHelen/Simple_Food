@@ -1,10 +1,10 @@
-import { render, screen } from "../../test-utils";
+import { render, screen } from "test-utils";
 import userEvent from "@testing-library/user-event";
 import CardItem from "./CardItem";
 
-import CartContext from "../../store/cart-context";
-import CartList from "../../components/Cart/CartList";
-import { cardItem, mockTitle } from "../../common/test-constants";
+import CartContext from "store/cart-context";
+import CartList from "components/Cart/CartList";
+import { cardItem, mockTitle } from "common/test-constants";
 
 describe("test CardItem", () => {
   it("CardItem renders", () => {

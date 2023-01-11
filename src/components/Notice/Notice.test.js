@@ -1,5 +1,5 @@
-import { render, screen } from "../../test-utils";
-import Notice from "./Notice";
+import { render, screen } from "test-utils";
+import Notice from "components/Notice/Notice";
 
 const mockNoticeData = { title: "Notice" };
 

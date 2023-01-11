@@ -1,6 +1,6 @@
-import { render, screen } from "../../test-utils";
-import OrderList from "./OrderList";
-import { mockedData } from "../../common/test-constants";
+import { render, screen } from "test-utils";
+import OrderList from "components/Orders/OrderList";
+import { mockedData } from "common/test-constants";
 
 describe("test OrderList", () => {
   it("render OrderList", async () => {

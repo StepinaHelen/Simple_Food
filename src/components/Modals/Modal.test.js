@@ -1,5 +1,5 @@
-import Modal from "./Modal";
-import { render, screen } from "../../test-utils";
+import Modal from "components/Modals/Modal";
+import { render, screen } from "test-utils";
 
 const mockekData = {
   title: "Modal text",

@@ -1,6 +1,6 @@
-import Hero from "../Hero/Hero";
-import CardList from "../Cards/CardsList";
-import { MarginWrapper } from "./PagesStyles";
+import Hero from "components/Hero/Hero";
+import CardList from "components/Cards/CardsList";
+import { MarginWrapper } from "components/Pages/PagesStyles";
 
 const MainPage = () => {
   return (
