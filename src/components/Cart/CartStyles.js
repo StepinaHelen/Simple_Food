@@ -6,34 +6,30 @@ export const List = styled.ul`
 `;
 
 export const TotalWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  font-weight: 400;
-  font-size: 48px;
-  line-height: 56px;
+  ${({ theme }) => theme.flex({})}
+  ${({ theme }) => theme.fontText({ fontSize: 48, lineHeight: 56 })}
 `;
 
 export const Item = styled.li`
+  ${({ theme }) => theme.flex({ flexDirection: "column" })};
+  background-color: ${({ theme }) => theme.colors.secondaryFont};
+  color: ${({ theme }) => theme.colors.mainFont};
   margin-bottom: 20px;
-  background-color: #fff;
-  box-shadow: 0px 2px 1px rgb(0 0 0 / 20%), 0px 1px 1px rgb(0 0 0 / 14%),
-    0px 1px 3px rgb(0 0 0 / 12%);
+  box-shadow: ${({ theme }) => theme.colors.boxShadow};
   border-radius: 0px 0px 4px 4px;
   width: 100%;
-  display: flex;
-  flex-direction: column;
 
   img {
-    @media screen and (min-width: 768px) {
+    @media screen and ${({ theme }) => theme.media.medium} {
       width: 330px;
       max-height: 199px;
     }
-    @media screen and (min-width: 1200px) {
+    @media screen and ${({ theme }) => theme.media.large} {
       max-height: 255px;
       width: 39%;
     }
   }
-  @media screen and (min-width: 768px) {
+  @media screen and ${({ theme }) => theme.media.medium} {
     flex-direction: row;
   }
 `;
@@ -44,19 +40,17 @@ export const WraperItem = styled.div`
   padding: 20px;
 
   h2 {
-    font-weight: 500;
-    font-size: 40px;
-    line-height: 47px;
+    ${({ theme }) =>
+      theme.fontText({ fontWeight: 500, fontSize: 40, lineHeight: 47 })}
     margin: 0 0 10px 0;
   }
 
   p {
-    font-weight: 500;
-    font-size: 28px;
-    line-height: 33px;
+    ${({ theme }) =>
+      theme.fontText({ fontWeight: 500, fontSize: 28, lineHeight: 33 })}
     margin: 0 0 10px 0;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and ${({ theme }) => theme.media.medium} {
     padding: 40px 32px;
     width: 61%;
     flex-direction: row;
@@ -64,28 +58,32 @@ export const WraperItem = styled.div`
     padding: 20px;
 
     h2 {
-      font-size: 28px;
-      line-height: 33px;
+      ${({ theme }) => theme.fontText({ fontSize: 28, lineHeight: 33 })}
       margin: 0 0 20px 0;
     }
 
     p {
-      font-size: 20px;
-      line-height: 23px;
+      ${({ theme }) => theme.fontText({ fontSize: 20, lineHeight: 23 })}
       margin: 0 0 20px 0;
     }
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and ${({ theme }) => theme.media.large} {
     h2 {
-      font-weight: 500;
-      font-size: 40px;
-      line-height: 47px;
+      ${({ theme }) =>
+        theme.fontText({
+          fontWeight: 500,
+          fontSize: 40,
+          lineHeight: 47,
+        })}
     }
 
     p {
-      font-weight: 500;
-      font-size: 28px;
-      line-height: 33px;
+      ${({ theme }) =>
+        theme.fontText({
+          fontWeight: 500,
+          fontSize: 28,
+          lineHeight: 33,
+        })}
     }
   }
 `;
@@ -101,5 +99,10 @@ export const BtnWrapper = styled.div`
   .trash {
     width: 35px;
     height: 44px;
+    cursor: pointer;
+    fill: ${({ theme }) => theme.colors.primary};
+    :hover {
+      fill: ${({ theme }) => theme.colors.secondary};
+    }
   }
 `;

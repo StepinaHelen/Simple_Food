@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
-  background-color: #6b068a;
-  color: white;
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.consantColor};
   width: 100%;
   display: block;
 `;
 
 export const Content = styled.div`
-  font-size: 16px;
-  line-height: 19px;
+  ${({ theme }) => theme.fontText({})}
   margin: 0 auto;
 
   p {
@@ -19,10 +18,11 @@ export const Content = styled.div`
   }
 
   span {
-    color: red;
+    color: ${({ theme }) => theme.colors.error};
   }
   a {
-    color: white;
+    color: ${({ theme }) => theme.colors.consantColor};
     display: inline-block;
+    text-decoration: underline;
   }
 `;

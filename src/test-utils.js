@@ -1,7 +1,8 @@
-import React from "react";
 import { render } from "@testing-library/react";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { BrowserRouter } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+import { baseTheme } from "./styles/theme";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -11,9 +12,11 @@ const queryClient = new QueryClient({
 });
 const AllTheProviders = ({ children }) => {
   return (
-    <QueryClientProvider contextSharing={true} client={queryClient}>
-      <BrowserRouter>{children}</BrowserRouter>
-    </QueryClientProvider>
+    <ThemeProvider theme={baseTheme}>
+      <QueryClientProvider contextSharing={true} client={queryClient}>
+        <BrowserRouter>{children}</BrowserRouter>
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 };
 

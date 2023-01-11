@@ -8,7 +8,7 @@ const Footer = () => {
         <Content>
           <p>
             &#169; 2022 | All Rights Reserved | Developed with &nbsp;
-            <span>&#10084;</span>&nbsp; by
+            <span>&#10084;</span>&nbsp; by &nbsp;
             <a href="https://www.linkedin.com/in/helen-stepina-a5b8b8211/">
               Stepina Helen
             </a>

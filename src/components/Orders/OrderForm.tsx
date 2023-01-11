@@ -10,7 +10,7 @@ const OrderForm = () => {
     <>
       <FormWrapper>
         <h2>Order summaries:</h2>
-        <Form>
+        <Form autoComplete="off">
           {FORMS_FIELD.map((el) => {
             return (
               <label key={el.id} className="control">

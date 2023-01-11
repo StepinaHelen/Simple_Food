@@ -3,5 +3,9 @@ import ShadowContainer from "components/Base/Containers/ShadowContainer";
 import { ThemeProvider } from "styled-components";
 import { baseTheme } from "styles/theme";
 test("renders Shadow Container", () => {
-  render(<ShadowContainer />);
+  render(
+    <ThemeProvider theme={baseTheme}>
+      <ShadowContainer />
+    </ThemeProvider>
+  );
 });

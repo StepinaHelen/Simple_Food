@@ -25,9 +25,14 @@ const Modal = (props: IModalProps) => {
   return createPortal(
     <BackdropWrapper onClick={props.onCloseModal}>
       <ModalWrapper onClick={(e) => e.stopPropagation}>
+        <BtnContainer onClick={props.onCloseModal}>
+          <Icons name="close" classes={"close"} />
+        </BtnContainer>
         <h2>{props.title}</h2>
         <p>{props.message}</p>
-        <Button onClick={props.onCloseModal}>Close</Button>
+        <IconWrapper>
+          <Icons name="check" classes={"check"} />
+        </IconWrapper>
       </ModalWrapper>
     </BackdropWrapper>,
     el

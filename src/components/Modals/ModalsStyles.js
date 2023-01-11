@@ -13,7 +13,7 @@ export const BackdropWrapper = styled.div`
 
 export const ModalWrapper = styled.div`
   position: fixed;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.consantColor};
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
@@ -25,4 +25,31 @@ export const ModalWrapper = styled.div`
   animation: slide-down 300ms ease-out forwards;
   text-align: center;
   z-index: 100;
+`;
+export const BtnContainer = styled.button`
+  background-color: transparent;
+  border: none;
+  position:absolute;
+  top:0;
+  right:-5px;
+  .close {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    :hover {
+      fill: ${({ theme }) => theme.colors.secondary};
+    }
+`;
+
+export const IconWrapper = styled.button`
+  background-color: ${({ theme }) => theme.colors.secondary};
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  .check {
+    height: 40px;
+    width: 40px;
+    fill: ${({ theme }) => theme.colors.consantColor};
+  }
 `;
