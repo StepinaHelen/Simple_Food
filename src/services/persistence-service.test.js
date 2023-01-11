@@ -1,4 +1,4 @@
-import { setLocalStorageItem } from "./persistence-service";
+import { setLocalStorageItem } from "services/persistence-service";
 const localStorageMock = (function () {
   let store = {};
 

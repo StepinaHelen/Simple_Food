@@ -1,6 +1,6 @@
-import { setLocalStorageItem } from "../services/persistence-service";
-import { IAddToCart, IRemoveItem } from "./interface";
-import { ICartContextState, ICardItem } from "../common/interfaces";
+import { setLocalStorageItem } from "services/persistence-service";
+import { IAddToCart, IRemoveItem } from "store/interface";
+import { ICartContextState, ICardItem } from "common/interfaces";
 
 export const addItemHandler = (
   state: ICartContextState,

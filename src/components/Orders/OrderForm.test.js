@@ -1,7 +1,7 @@
-import { render, screen, fireEvent, waitFor } from "../../test-utils";
-import OrderForm from "./OrderForm";
+import { render, screen, fireEvent, waitFor } from "test-utils";
+import OrderForm from "components/Orders/OrderForm";
 import { Formik } from "formik";
-import { FORMS_FIELD } from "../../common/constants";
+import { FORMS_FIELD } from "common/constants";
 
 test("render OrderForm", async () => {
   render(

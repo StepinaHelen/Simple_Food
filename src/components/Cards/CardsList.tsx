@@ -1,19 +1,18 @@
-import CardItem from "./CardItem";
-import Button from "../Button/Button";
-import CommonContainer from "../Base/Containers/CommonContainer";
-import Icons from "../SvgComponent/SvgComponent";
+import CardItem from "components/Cards/CardItem";
+import Button from "components/Button/Button";
+import CommonContainer from "components/Base/Containers/CommonContainer";
+import Icons from "components/SvgComponent/SvgComponent";
 import { SetStateAction, useState } from "react";
-import { SortWrapper } from "./CardsStyles";
-import { CATEGORIES } from "../../common/constants";
-import { List, Btn } from "./CardsStyles";
-import { getCards, multiSortHandler } from "../../services/common-service";
-import { setLocalStorageItem } from "../../services/persistence-service";
+import { CATEGORIES } from "common/constants";
+import { List, Btn, SortWrapper } from "components/Cards/CardsStyles";
+import { getCards, multiSortHandler } from "services/common-service";
+import { setLocalStorageItem } from "services/persistence-service";
 import { useQuery } from "react-query";
-import Modal from "../Modals/Modal";
+import Modal from "components/Modals/Modal";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
-import { KEYQUERIES } from "../../common/constants";
-import { ICardItem } from "../../common/interfaces";
+import { KEYQUERIES } from "common/constants";
+import { ICardItem } from "common/interfaces";
 
 function CardList() {
   const [btn, setBtn] = useState("active");

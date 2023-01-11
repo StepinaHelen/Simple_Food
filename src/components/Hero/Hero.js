@@ -1,4 +1,4 @@
-import { Background, Content } from "./HeroStyles";
+import { Background, Content } from "components/Hero/HeroStyles";
 
 const Hero = () => {
   return (

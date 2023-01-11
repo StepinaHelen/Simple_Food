@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import Icons from "../../SvgComponent/SvgComponent";
-import CommonContainer from "../Containers/CommonContainer";
+import Icons from "components/SvgComponent/SvgComponent";
+import CommonContainer from "components/Base/Containers/CommonContainer";
 import { Link } from "react-router-dom";
-import CartContext from "../../../store/cart-context";
-import { ROUTES } from "../../../common/constants";
+import CartContext from "store/cart-context";
+import { ROUTES } from "common/constants";
 import {
   HeaderContainer,
   HeaderWrapper,

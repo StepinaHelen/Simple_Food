@@ -1,17 +1,13 @@
-import CartContext from "./cart-context";
+import CartContext from "store/cart-context";
 import { PropsWithChildren, useReducer } from "react";
-import { getLocalStorageItem } from "../services/persistence-service";
-import {
-  ICartContextState,
-  ICardItem,
-  ICartContext,
-} from "../common/interfaces";
+import { getLocalStorageItem } from "services/persistence-service";
+import { ICartContextState, ICardItem, ICartContext } from "common/interfaces";
 import {
   addItemHandler,
   removeItemHandler,
   clearCartHandler,
-} from "./helpers-functions";
-import { ICardActionTypes, CartActions } from "./interface";
+} from "store/helpers-functions";
+import { ICardActionTypes, CartActions } from "store/interface";
 
 const defaultCartState = getLocalStorageItem("cartItems")
   ? getLocalStorageItem("cartItems")

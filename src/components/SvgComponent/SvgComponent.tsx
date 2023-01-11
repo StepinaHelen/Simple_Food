@@ -1,5 +1,5 @@
-import Icons from "../../assets/sprite.svg";
-import { ISVG } from "../../common/interfaces";
+import Icons from "assets/sprite.svg";
+import { ISVG } from "common/interfaces";
 
 const SvgComponent = ({ name, classes }: ISVG) => {
   return (

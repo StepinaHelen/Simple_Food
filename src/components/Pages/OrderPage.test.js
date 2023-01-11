@@ -1,5 +1,5 @@
-import OrderPage from "./OrderPage";
-import { render, screen } from "../../test-utils";
+import OrderPage from "components/Pages/OrderPage";
+import { render, screen } from "test-utils";
 
 describe("test OrderPage", () => {
   it("render OrderPage", async () => {

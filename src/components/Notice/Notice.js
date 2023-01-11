@@ -1,5 +1,5 @@
-import catImg from "../../assets/cat.png";
-import { Image, Wrapper } from "./NoticeStyles";
+import catImg from "assets/cat.png";
+import { Image, Wrapper } from "components/Notice/NoticeStyles";
 
 const Notice = (props) => {
   return (

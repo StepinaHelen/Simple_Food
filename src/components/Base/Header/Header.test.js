@@ -1,5 +1,5 @@
-import { render, screen } from "../../../test-utils";
-import Header from "./Header";
+import { render, screen } from "test-utils";
+import Header from "components/Base/Header/Header";
 describe("test Footer", () => {
   it("Header renders", () => {
     render(<Header />);

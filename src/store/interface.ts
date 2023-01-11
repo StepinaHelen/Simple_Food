@@ -1,4 +1,4 @@
-import { ICardItem } from "../common/interfaces";
+import { ICardItem } from "common/interfaces";
 
 export enum ICardActionTypes {
   addItem = "ADD_ITEM",

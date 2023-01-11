@@ -1,10 +1,10 @@
 import axios from "axios";
-import { getLocalStorageItem } from "./persistence-service";
+import { getLocalStorageItem } from "services/persistence-service";
 import {
   ICardItem,
   IOrdersHistoryItem,
   IPost_Query_Form,
-} from "../common/interfaces";
+} from "common/interfaces";
 
 export const postOrderToHistory = async ({
   form,

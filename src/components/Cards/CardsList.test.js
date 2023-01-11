@@ -1,7 +1,7 @@
-import CardList from "./CardsList";
-import { render, screen, waitFor } from "../../test-utils";
+import CardList from "components/Cards/CardsList";
+import { render, screen, waitFor } from "test-utils";
 import userEvent from "@testing-library/user-event";
-import { mockTitle } from "../../common/test-constants";
+import { mockTitle } from "common/test-constants";
 
 describe("cardList", () => {
   it("render cardList", async () => {

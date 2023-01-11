@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { ICardItem, ICartContext } from "../common/interfaces";
+import { ICardItem, ICartContext } from "common/interfaces";
 
 const CartContext = createContext<ICartContext>({
   items: [],

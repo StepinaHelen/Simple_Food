@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import mealImg from "../../assets/simply-food.jpg";
+import mealImg from "assets/simply-food.jpg";
 
 export const Background = styled.div`
   position: relative;

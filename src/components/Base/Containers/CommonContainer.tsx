@@ -1,5 +1,5 @@
-import { Container } from "./ContainersStyles";
-import { ICommonContainerProps } from "../../../common/interfaces";
+import { Container } from "components/Base/Containers/ContainersStyles";
+import { ICommonContainerProps } from "common/interfaces";
 
 const CommonContainer = (props: ICommonContainerProps) => {
   return (
