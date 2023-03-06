@@ -14,13 +14,23 @@ import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 import { KEYQUERIES } from "../../common/constants";
-import { IOrdersQuery } from "../../common/interfaces";
+import {
+  ICardItem,
+  IOrdersHistoryItem,
+  IOrdersQuery,
+} from "../../common/interfaces";
 
 const OrdersHistoryItem = () => {
-  const { isLoading, data, error } = useQuery<IOrdersQuery, Error>(
+  const { isLoading, data, error } = useQuery<any, Error>(
     KEYQUERIES.orders,
-    getOrders
+    () => getOrders()
   );
+
+  // const { data, error, isLoading } = useQuery<ICardItem[], Error>(
+  //   [KEYQUERIES.cards, choosenCategory],
+  //   () => getCards(choosenCategory)
+  // );
+
   const navigate = useNavigate();
 
   const modalHandler = () => {
@@ -30,7 +40,7 @@ const OrdersHistoryItem = () => {
   return (
     <CommonContainer withMargin={true}>
       <WrapperContainer>
-        {data && !data.data.length && (
+        {!data && (
           <Notice
             title="You don't have any orders!"
             message="Place your first order now! We're waiting for you :)"
@@ -43,9 +53,9 @@ const OrdersHistoryItem = () => {
           <Modal title={error.message} onCloseModal={modalHandler} />
         )}
 
-        {data && data.data.length > 0 && (
+        {data && (
           <>
-            {data.data.map((el) => {
+            {data.map((el: any) => {
               return (
                 <Wrapper key={el.id}>
                   <DetailsContainer>
@@ -55,8 +65,8 @@ const OrdersHistoryItem = () => {
                         <li>
                           <h3>First and last name:</h3>
                           <p>
-                            {el.name} &nbsp;
-                            {el.surName}
+                            {el.firstName} &nbsp;
+                            {el.lastName}
                           </p>
                         </li>
                         <li>
@@ -74,13 +84,13 @@ const OrdersHistoryItem = () => {
                     </div>
                     <div className="date">
                       <h3>Date:</h3>
-                      <p>{el.date.slice(0, 10)}</p>
+                      <p>{el.date.toString().slice(0, 10)}</p>
                     </div>
                   </DetailsContainer>
                   <hr />
                   <ShadowContainer withShadow={false}>
                     <OrderList
-                      orderItems={el.items}
+                      orderItems={el.foods}
                       totalAmount={el.totalAmount}
                     ></OrderList>
                   </ShadowContainer>
