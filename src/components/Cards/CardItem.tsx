@@ -2,11 +2,20 @@ import { useContext, useState } from "react";
 import Button from "components/Button/Button";
 import CartContext from "store/cart-context";
 import { toast } from "react-toastify";
-import { Item, WraperItem, AmountWrapper, BtnWrapper } from "components/Cards/CardsStyles";
+import {
+  Item,
+  WraperItem,
+  AmountWrapper,
+  BtnWrapper,
+} from "components/Cards/CardsStyles";
 import { ICardItem } from "common/interfaces";
+import { useDispatch, useSelector } from "react-redux/es/exports";
+import { cartActions } from "store/cart-slice";
 
 const CardItem = (props: ICardItem) => {
-  const cartContext = useContext(CartContext);
+  const dispatchFunction = useDispatch();
+
+  // const cartContext = useContext(CartContext);
   const [value, setValue] = useState(1);
   const decrement = () => {
     if (value > 1) {
@@ -15,14 +24,25 @@ const CardItem = (props: ICardItem) => {
   };
 
   const addToCartHandler = () => {
-    cartContext.addItem({
-      id: props.id,
-      title: props.title,
-      price: props.price,
-      category: props.category,
-      amount: value,
-      img: props.img,
-    });
+    dispatchFunction(
+      cartActions.addItem({
+        id: props.id,
+        title: props.title,
+        price: props.price,
+        category: props.category,
+        amount: value,
+        img: props.img,
+      })
+    );
+    // cartContext.addItem({
+    //   id: props.id,
+    //   title: props.title,
+    //   price: props.price,
+    //   category: props.category,
+    //   amount: value,
+    //   img: props.img,
+    // });
+
     setValue(1);
     toast(`${props.title} added to cart successfully!`);
   };

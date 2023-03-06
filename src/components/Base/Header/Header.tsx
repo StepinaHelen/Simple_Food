@@ -13,12 +13,21 @@ import {
   IconContainer,
   ThemeBtn,
 } from "./HeaderStyles";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 const Header = (props: any) => {
-  const cartContext = useContext(CartContext);
-  const cartItemsAmount = cartContext.items.reduce((currentValue, item) => {
-    return currentValue + item.amount;
-  }, 0);
+  const cartItems = useSelector((state: any) => {
+    return state.cart.items.reduce((currentValue: number, item: any) => {
+      console.log(currentValue + item.amount);
+      return currentValue + item.amount;
+    }, 0);
+  });
+
+  // const cartContext = useContext(CartContext);
+  // const cartItemsAmount = cartContext.items.reduce((currentValue, item) => {
+  //   return currentValue + item.amount;
+  // }, 0);
+
   return (
     <React.Fragment>
       {props.mode === "dark" ? (
@@ -42,7 +51,7 @@ const Header = (props: any) => {
                 <IconContainer>
                   <Icons name="cart" classes={"icon"} />
                   <Amount>
-                    <span>{cartItemsAmount}</span>
+                    <span>{cartItems}</span>
                   </Amount>
                 </IconContainer>
               </Link>

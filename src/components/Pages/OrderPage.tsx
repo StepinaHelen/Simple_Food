@@ -14,6 +14,9 @@ import { Formik, FormikProps } from "formik";
 import { OrderSchema } from "../../common/utils";
 import { useMutation } from "react-query";
 import { IForm, IPost_Query_Form } from "../../common/interfaces";
+import { useDispatch } from "react-redux/es/hooks/useDispatch";
+import { cartActions } from "store/cart-slice";
+import { useSelector } from "react-redux";
 
 const initialFormState: IForm = {
   name: "",
@@ -31,6 +34,18 @@ const OrderPage = () => {
     postOrderToHistory
   );
 
+  const cartTotalAmount = useSelector((state: any) => {
+    console.log(state);
+    return state.cart.totalAmount;
+  });
+
+  const cartItems = useSelector((state: any) => {
+    return state.cart.items;
+  });
+
+  const dispatchFunction = useDispatch();
+  // const cartContext = useContext(CartContext);
+
   const modalHandler = (): void => {
     navigate("/order-history");
   };
@@ -38,7 +53,8 @@ const OrderPage = () => {
   const submitHandler = (form: IForm): void => {
     mutate({ form, cartContext });
     setShowModal(true);
-    cartContext.clearCart();
+    // cartContext.clearCart();
+    dispatchFunction(cartActions.clearCart());
   };
 
   return (
@@ -68,8 +84,8 @@ const OrderPage = () => {
                 <OrderForm></OrderForm>
                 <ShadowContainer withShadow={true}>
                   <OrderList
-                    orderItems={cartContext.items}
-                    totalAmount={cartContext.totalAmount}
+                    orderItems={cartItems}
+                    totalAmount={cartTotalAmount}
                   ></OrderList>
                 </ShadowContainer>
               </OrderContainer>
