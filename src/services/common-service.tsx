@@ -21,7 +21,7 @@ export const postOrderToHistory = async ({
     street: form.street,
     foods: cartContext.items,
     totalAmount: cartContext.totalAmount,
-    date: new Date(),
+    date: new Date().toString(),
   });
 
   return docRef;

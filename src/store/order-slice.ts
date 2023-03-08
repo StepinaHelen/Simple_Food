@@ -4,39 +4,14 @@ import {
   createSelector,
 } from "@reduxjs/toolkit";
 import { IOrdersHistoryItem, IPost_Query_Form } from "common/interfaces";
-import { collection, getDocs, addDoc } from "firebase/firestore";
-import { db } from "../../src/firebase";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { getOrders, postOrderToHistory } from "../services/common-service";
 
-export const fetchOrders = createAsyncThunk("orders/fetchOrders", async () => {
-  return await getDocs(collection(db, "ordersHistory")).then(
-    (querySnapshot) => {
-      const newData = querySnapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      return newData;
-    }
-  );
-});
+export const fetchOrders = createAsyncThunk("orders/fetchOrders", getOrders);
 
 export const addOrderToHistory = createAsyncThunk(
   "orders/addOrderToHistory",
-  async ({ form, cartContext }: IPost_Query_Form): Promise<any> => {
-    console.log("orders/addOrderToHistory");
-    const docRef = await addDoc(collection(db, "ordersHistory"), {
-      firstName: form.name,
-      lastName: form.surName,
-      phone: form.phone,
-      city: form.city,
-      street: form.street,
-      foods: cartContext.items,
-      totalAmount: cartContext.totalAmount,
-      date: new Date(),
-    });
-
-    return docRef;
-  }
+  postOrderToHistory
 );
 
 export interface initialStateI {

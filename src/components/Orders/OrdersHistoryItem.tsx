@@ -21,11 +21,9 @@ import { useEffect } from "react";
 
 const OrdersHistoryItem = () => {
   const orders = useSelector(selectAllOrders);
+  const error = useSelector((state: any) => state.orders.error);
+  const loading = useSelector((state: any) => state.orders.loading);
   const dispatchAction = useDispatch();
-  const { isLoading, data, error } = useQuery<any, Error>(
-    KEYQUERIES.orders,
-    () => getOrders()
-  );
 
   useEffect(() => {
     dispatchAction(fetchOrders() as any) as any;
@@ -47,7 +45,7 @@ const OrdersHistoryItem = () => {
           ></Notice>
         )}
 
-        {isLoading && <Spinner />}
+        {loading && <Spinner />}
 
         {error && error.message && (
           <Modal title={error.message} onCloseModal={modalHandler} />
@@ -56,6 +54,7 @@ const OrdersHistoryItem = () => {
         {orders && (
           <>
             {orders.map((el: any) => {
+              console.log(el);
               return (
                 <Wrapper key={el.id}>
                   <DetailsContainer>
@@ -84,7 +83,7 @@ const OrdersHistoryItem = () => {
                     </div>
                     <div className="date">
                       <h3>Date:</h3>
-                      {/* <p>{el.date.toString().slice(0, 10)}</p> */}
+                      <p>{el.date.toString().slice(0, 10)}</p>
                     </div>
                   </DetailsContainer>
                   <hr />
