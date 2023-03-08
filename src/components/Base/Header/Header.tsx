@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import Icons from "components/SvgComponent/SvgComponent";
 import CommonContainer from "components/Base/Containers/CommonContainer";
 import { Link } from "react-router-dom";
-import CartContext from "store/cart-context";
 import { ROUTES } from "common/constants";
 import {
   HeaderContainer,
@@ -13,12 +12,16 @@ import {
   IconContainer,
   ThemeBtn,
 } from "./HeaderStyles";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 const Header = (props: any) => {
-  const cartContext = useContext(CartContext);
-  const cartItemsAmount = cartContext.items.reduce((currentValue, item) => {
-    return currentValue + item.amount;
-  }, 0);
+  const cartItems = useSelector((state: any) => {
+    return state.cart.items.reduce((currentValue: number, item: any) => {
+      return currentValue + item.amount;
+    }, 0);
+  });
+
+
   return (
     <React.Fragment>
       {props.mode === "dark" ? (
@@ -42,7 +45,7 @@ const Header = (props: any) => {
                 <IconContainer>
                   <Icons name="cart" classes={"icon"} />
                   <Amount>
-                    <span>{cartItemsAmount}</span>
+                    <span>{cartItems}</span>
                   </Amount>
                 </IconContainer>
               </Link>

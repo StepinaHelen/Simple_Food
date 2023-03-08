@@ -4,10 +4,7 @@ export const Item = styled.li`
   margin: 15px;
   background-color: ${({ theme }) => theme.colors.secondaryFont};
   box-shadow: ${({ theme }) => theme.colors.boxShadow};
-
   border-radius: 0px 0px 4px 4px;
-  margin-left: auto;
-  margin-right: auto;
 
   @media screen and (min-width: 320px) {
     width: 100%;

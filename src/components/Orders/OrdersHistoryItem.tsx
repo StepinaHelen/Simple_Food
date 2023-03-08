@@ -14,13 +14,21 @@ import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 import { KEYQUERIES } from "../../common/constants";
-import { IOrdersQuery } from "../../common/interfaces";
+
+import { fetchOrders, selectAllOrders } from "../../store/order-slice";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const OrdersHistoryItem = () => {
-  const { isLoading, data, error } = useQuery<IOrdersQuery, Error>(
-    KEYQUERIES.orders,
-    getOrders
-  );
+  const orders = useSelector(selectAllOrders);
+  const error = useSelector((state: any) => state.orders.error);
+  const loading = useSelector((state: any) => state.orders.loading);
+  const dispatchAction = useDispatch();
+
+  useEffect(() => {
+    dispatchAction(fetchOrders() as any) as any;
+  }, []);
+
   const navigate = useNavigate();
 
   const modalHandler = () => {
@@ -30,22 +38,23 @@ const OrdersHistoryItem = () => {
   return (
     <CommonContainer withMargin={true}>
       <WrapperContainer>
-        {data && !data.data.length && (
+        {!orders && (
           <Notice
             title="You don't have any orders!"
             message="Place your first order now! We're waiting for you :)"
           ></Notice>
         )}
 
-        {isLoading && <Spinner />}
+        {loading && <Spinner />}
 
         {error && error.message && (
           <Modal title={error.message} onCloseModal={modalHandler} />
         )}
 
-        {data && data.data.length > 0 && (
+        {orders && (
           <>
-            {data.data.map((el) => {
+            {orders.map((el: any) => {
+              console.log(el);
               return (
                 <Wrapper key={el.id}>
                   <DetailsContainer>
@@ -55,8 +64,8 @@ const OrdersHistoryItem = () => {
                         <li>
                           <h3>First and last name:</h3>
                           <p>
-                            {el.name} &nbsp;
-                            {el.surName}
+                            {el.firstName} &nbsp;
+                            {el.lastName}
                           </p>
                         </li>
                         <li>
@@ -74,13 +83,13 @@ const OrdersHistoryItem = () => {
                     </div>
                     <div className="date">
                       <h3>Date:</h3>
-                      <p>{el.date.slice(0, 10)}</p>
+                      <p>{el.date.toString().slice(0, 10)}</p>
                     </div>
                   </DetailsContainer>
                   <hr />
                   <ShadowContainer withShadow={false}>
                     <OrderList
-                      orderItems={el.items}
+                      orderItems={el.foods}
                       totalAmount={el.totalAmount}
                     ></OrderList>
                   </ShadowContainer>

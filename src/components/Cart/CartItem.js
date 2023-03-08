@@ -1,12 +1,14 @@
-import { useContext } from "react";
 import Icons from "../SvgComponent/SvgComponent";
-import CartContext from "../../store/cart-context";
+
 import { Item, WraperItem, AmountWrapper, BtnWrapper } from "./CartStyles";
+import { useDispatch } from "react-redux/es/hooks/useDispatch";
+import { cartActions } from "store/cart-slice";
 
 const CartItem = (props) => {
-  const cartContext = useContext(CartContext);
+  const dispatchAction = useDispatch();
+
   const deleteFromCartHandler = () => {
-    cartContext.removeItem(props.id);
+    dispatchAction(cartActions.removeItem(props.id));
   };
 
   return (

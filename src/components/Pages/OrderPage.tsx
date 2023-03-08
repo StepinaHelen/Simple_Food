@@ -1,19 +1,20 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CommonContainer from "../Base/Containers/CommonContainer";
 import OrderList from "../Orders/OrderList";
 import Button from "../Button/Button";
 import Icons from "../SvgComponent/SvgComponent";
-import CartContext from "../../store/cart-context";
 import OrderForm from "../Orders/OrderForm";
 import ShadowContainer from "../Base/Containers/ShadowContainer";
 import Modal from "../Modals/Modal";
 import { OrderContainer, BtnContainer, Wrapper } from "./PagesStyles";
-import { postOrderToHistory } from "../../services/common-service";
 import { Formik, FormikProps } from "formik";
 import { OrderSchema } from "../../common/utils";
-import { useMutation } from "react-query";
-import { IForm, IPost_Query_Form } from "../../common/interfaces";
+import { IForm } from "../../common/interfaces";
+import { useDispatch } from "react-redux/es/hooks/useDispatch";
+import { cartActions } from "store/cart-slice";
+import { useSelector } from "react-redux";
+import { addOrderToHistory } from "../../store/order-slice";
 
 const initialFormState: IForm = {
   name: "",
@@ -26,19 +27,27 @@ const initialFormState: IForm = {
 const OrderPage = () => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  const cartContext = useContext(CartContext);
-  const { mutate, error, isError } = useMutation<any, Error, IPost_Query_Form>(
-    postOrderToHistory
-  );
+  const dispatchAction = useDispatch();
+  const error = useSelector((state: any) => state.orders.error);
+
+  const cartTotalAmount = useSelector((state: any) => {
+    return state.cart.totalAmount;
+  });
+
+  const cartContext = useSelector((state: any) => {
+    return state.cart;
+  });
+
+  // const cartContext = useContext(CartContext);
 
   const modalHandler = (): void => {
     navigate("/order-history");
   };
 
   const submitHandler = (form: IForm): void => {
-    mutate({ form, cartContext });
+    dispatchAction(addOrderToHistory({ form, cartContext }) as any) as any;
     setShowModal(true);
-    cartContext.clearCart();
+    dispatchAction(cartActions.clearCart());
   };
 
   return (
@@ -51,7 +60,7 @@ const OrderPage = () => {
         />
       )}
 
-      {isError && error.message && (
+      {error && error.message && (
         <Modal title={error.message} onCloseModal={modalHandler} />
       )}
       <Formik
@@ -69,7 +78,7 @@ const OrderPage = () => {
                 <ShadowContainer withShadow={true}>
                   <OrderList
                     orderItems={cartContext.items}
-                    totalAmount={cartContext.totalAmount}
+                    totalAmount={cartTotalAmount}
                   ></OrderList>
                 </ShadowContainer>
               </OrderContainer>
