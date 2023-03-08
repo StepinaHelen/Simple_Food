@@ -17,7 +17,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: initialCartState,
   reducers: {
-    addItem(state, action) {
+    addItem: (state, action) => {
       const exitingItemIndex = state.items.findIndex(
         (el) => el.id === action.payload.id
       );
@@ -51,7 +51,7 @@ const cartSlice = createSlice({
       state.totalAmount = updateTotalAmount;
     },
 
-    removeItem(state, action) {
+    removeItem: (state, action) => {
       const filteredItems = state.items.filter(
         (el) => el.id !== action.payload
       );
@@ -67,7 +67,7 @@ const cartSlice = createSlice({
       state.items = filteredItems;
       state.totalAmount = newState.totalAmount;
     },
-    clearCart(state) {
+    clearCart: (state) => {
       state.items = [];
       state.totalAmount = 0;
     },

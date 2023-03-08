@@ -14,22 +14,22 @@ import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 import { KEYQUERIES } from "../../common/constants";
-import {
-  ICardItem,
-  IOrdersHistoryItem,
-  IOrdersQuery,
-} from "../../common/interfaces";
+
+import { fetchOrders, selectAllOrders } from "../../store/order-slice";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const OrdersHistoryItem = () => {
+  const orders = useSelector(selectAllOrders);
+  const dispatchAction = useDispatch();
   const { isLoading, data, error } = useQuery<any, Error>(
     KEYQUERIES.orders,
     () => getOrders()
   );
 
-  // const { data, error, isLoading } = useQuery<ICardItem[], Error>(
-  //   [KEYQUERIES.cards, choosenCategory],
-  //   () => getCards(choosenCategory)
-  // );
+  useEffect(() => {
+    dispatchAction(fetchOrders() as any) as any;
+  }, []);
 
   const navigate = useNavigate();
 
@@ -40,7 +40,7 @@ const OrdersHistoryItem = () => {
   return (
     <CommonContainer withMargin={true}>
       <WrapperContainer>
-        {!data && (
+        {!orders && (
           <Notice
             title="You don't have any orders!"
             message="Place your first order now! We're waiting for you :)"
@@ -53,9 +53,9 @@ const OrdersHistoryItem = () => {
           <Modal title={error.message} onCloseModal={modalHandler} />
         )}
 
-        {data && (
+        {orders && (
           <>
-            {data.map((el: any) => {
+            {orders.map((el: any) => {
               return (
                 <Wrapper key={el.id}>
                   <DetailsContainer>
@@ -84,7 +84,7 @@ const OrdersHistoryItem = () => {
                     </div>
                     <div className="date">
                       <h3>Date:</h3>
-                      <p>{el.date.toString().slice(0, 10)}</p>
+                      {/* <p>{el.date.toString().slice(0, 10)}</p> */}
                     </div>
                   </DetailsContainer>
                   <hr />

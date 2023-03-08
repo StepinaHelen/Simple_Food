@@ -1,7 +1,5 @@
 import CartItem from "./CartItem";
 import CommonContainer from "../Base/Containers/CommonContainer";
-import { useContext } from "react";
-import CartContext from "../../store/cart-context";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 import { List, TotalWrapper } from "./CartStyles";
@@ -10,8 +8,6 @@ import Notice from "../Notice/Notice";
 import { useSelector } from "react-redux";
 
 const CartList = () => {
-  const cartContext = useContext(CartContext);
-
   const cartItems = useSelector((state) => {
     return state.cart.items;
   });
